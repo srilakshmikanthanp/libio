@@ -56,14 +56,14 @@ This is Header only library so just download [inout.h](src/srilakshmikanthanp/in
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Usage is very simple, example whould operates on some of basic types,
+Usage is very simple, example that operates on some of basic types in c,
 
 ~~~c
 #include "inout.h"
 
 int main()
 {
-    // unnessery string_str and str in valstr but it help beginer
+    // seemes like unnessery that string_str and str in valstr but it may help beginer
     string valstr = string_str(input("Enter String : "));
     print("You gave : ", str(valstr), "\n");
 
