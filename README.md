@@ -5,7 +5,7 @@
   <p align="center">
     Easy Input Output Library For C
     <br />
-    <a href="https://github.com/srilakshmikanthanp/InOut/docs/html"><strong>Explore the docs »</strong></a>
+    <a href="https://srilakshmikanthanp.github.io/InOut/docs/html/"><strong>Explore the docs »</strong></a>
     <br />
     <a href="https://github.com/srilakshmikanthanp/InOut/issues">Report Bug</a>
     ·
