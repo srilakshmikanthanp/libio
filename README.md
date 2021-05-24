@@ -33,12 +33,10 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is an easy input output library for c especially for begineers. This Library works on top off stdio.h but uses a input function that returns string that allocated on heap but it tracks of that with help of linked list that will be deallocated or freed after main. print function takes variable arg of char* you can conver buildin types to string easily with str that uses _Generic.
+This is an easy input output library for c especially for begineers. This Library works on top of stdio.h but uses a input function that returns string that allocated on heap but it tracks of that with help of linked list that will be deallocated or freed after main. print function takes variable arg of char* you can convert build in types to string easily with str that uses _Generic to operate on various types.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -51,7 +49,7 @@ git clone https://github.com/srilakshmikanthanp/InOut/
 
 ### Installation
 
-This is Header only library so just download [inout.h](src/srilakshmikanthanp/inout.h) and use
+This is Header only library so just download [inout.h](src/srilakshmikanthanp/inout.h) and use it.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
