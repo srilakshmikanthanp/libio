@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['node_9',['node',['../inout_8h.html#ac10e09aacfacc0ae55fd12375b0a4513',1,'inout.h']]],
-  ['nxt_10',['nxt',['../structlnlist.html#a9d7eb3beddb73d577131af420ed19b1e',1,'lnlist']]]
+  ['print_9',['print',['../inout_8h.html#a0eabd5db583e036746080f1d4f74cc92',1,'inout.h']]],
+  ['ptr_10',['ptr',['../structlnlist.html#a8834a27b6c19cc259d17992e93036af9',1,'lnlist']]]
 ];

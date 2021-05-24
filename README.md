@@ -63,17 +63,18 @@ Usage is very simple, simple example whould be that takes some of types,
 
 int main()
 {
-    string valstr = consoleinput("Enter String : ");
-    consoleprint("You gave : ", valstr, "\n");
+    // unnessery string_str and str in valstr but it help beginer
+    string valstr = string_str(input("Enter String : "));
+    print("You gave : ", str(valstr), "\n");
 
-    char valchr = signed_char(consoleinput("Enter Char : "));
-    consoleprint("You gave : ", str(valchr), "\n");
+    char valchr = signed_char(input("Enter Char : "));
+    print("You gave : ", str(valchr), "\n");
 
-    int valint = signed_int(consoleinput("Enter Int : "));
-    consoleprint("You gave : ", str(valint), "\n");
+    int valint = signed_int(input("Enter Int : "));
+    print("You gave : ", str(valint), "\n");
 
-    float valflt = signed_float(consoleinput("Enter Float : "));
-    consoleprint("You gave : ", str(valflt), "\n");
+    float valflt = signed_float(input("Enter Float : "));
+    print("You gave : ", str(valflt), "\n");
 
     return 0;
 }
@@ -89,8 +90,15 @@ Available input functions,
  * @param file file to read
  * @return string readed string
  */
-const string input(FILE *file, const string format, ...);
+const string read(FILE *file, const string format, ...);
 
+/**
+ * @brief return same string
+ * 
+ * @param str string
+ * @return string value
+ */
+string string_str(string str)
 
 /**
  * @brief returns signed char from string if any error then
@@ -226,7 +234,7 @@ Avaibale output functions,
  * @param file file to print
  * @param ...  char* 
  */
-void print(FILE* file, ...);
+void write(FILE* file, ...);
 
 /**
  * @brief convert definded types to string
@@ -243,12 +251,12 @@ Console defaults,
 /**
  * @brief console input with stdin default
  */
-#define consoleinput(...) input(stdin, __VA_ARGS__)
+#define input(...) read(stdin, __VA_ARGS__)
 
 /**
  * @brief console output with stdout default 
  */
-#define consoleprint(...) print(stdout, __VA_ARGS__)
+#define print(...) write(stdout, __VA_ARGS__)
 ~~~
 
 _For more examples, please refer to the Documentation_

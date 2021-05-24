@@ -136,7 +136,7 @@ void lnlistdel()
  * @param file file to read
  * @return string readed string
  */
-const string input(FILE *file, const string format, ...)
+const string read(FILE *file, const string format, ...)
 {
     // print the args
     if (format != NULL)
@@ -255,6 +255,17 @@ signed char signed_char(const string str)
 
     // finally done
     return str[0];
+}
+
+/**
+ * @brief return same string
+ * 
+ * @param str string
+ * @return string value
+ */
+string string_str(string str)
+{
+    return str;
 }
 
 /**
@@ -702,7 +713,7 @@ long double signed_long_double(const string str)
  * @param count count of arguments
  * @param ... char*
  */
-void basic_print(FILE *file, int count, ...)
+void basic_write(FILE *file, int count, ...)
 {
     // varg init
     va_list valist;
@@ -735,10 +746,21 @@ void basic_print(FILE *file, int count, ...)
  * @param File file to print
  * @param ... char*
  */
-#define print(File, ...) basic_print(File,              \
+#define write(File, ...) basic_print(File,              \
     sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
     __VA_ARGS__                                         \
 )
+
+/**
+ * @brief return same string pointer
+ * 
+ * @param str string
+ * @return string string
+ */
+string string_to_str(string str)
+{
+    return str;
+}
 
 /**
  * @brief signed char to string 
@@ -1041,6 +1063,7 @@ string signed_long_double_to_str(long double val)
  * @param val value to convert
  */
 #define str(val) _Generic((val),                        \
+    char*              : string_to_str,                 \
     char               : signed_char_to_str,            \
     signed char        : signed_char_to_str,            \
     unsigned char      : unsigned_char_to_str,          \
@@ -1060,12 +1083,12 @@ string signed_long_double_to_str(long double val)
 /**
  * @brief console input with stdin default
  */
-#define consoleinput(...) input(stdin, __VA_ARGS__)
+#define input(...) read(stdin, __VA_ARGS__)
 
 /**
  * @brief console output with stdout default 
  */
-#define consoleprint(...) print(stdout, __VA_ARGS__)
+#define print(...) write(stdout, __VA_ARGS__)
 
 /**
  * @brief end of library 

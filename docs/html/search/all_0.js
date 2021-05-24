@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['basic_5fprint_0',['basic_print',['../inout_8h.html#a9a5ffbe3365f113137c12d208f5fbc51',1,'inout.h']]]
+  ['basic_5fwrite_0',['basic_write',['../inout_8h.html#a9bc3c1d624fad012d4654614cc05023c',1,'inout.h']]]
 ];

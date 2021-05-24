@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['consoleinput_1',['consoleinput',['../inout_8h.html#a40a2e7925a1ae7f0884c6028e31b5db4',1,'inout.h']]],
-  ['consoleprint_2',['consoleprint',['../inout_8h.html#a754e06cfa328eef2ea3da02301d1c39a',1,'inout.h']]]
+  ['inout_1',['InOut',['../index.html',1,'']]],
+  ['inout_2eh_2',['inout.h',['../inout_8h.html',1,'']]],
+  ['input_3',['input',['../inout_8h.html#a96350deb6fb77d566991d61e5c92ac9e',1,'inout.h']]]
 ];
