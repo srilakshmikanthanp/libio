@@ -22,10 +22,11 @@
  * SOFTWARE.
  */
 
-#ifndef SRILAKSHMIKANTHANPINOUT_H
-#define SRILAKSHMIKANTHANPINOUT_H
+#ifndef INOUT_HEADER
+#define INOUT_HEADER
 
 #include <stdio.h>
+#include <math.h>
 #include <stdarg.h>
 #include <string.h>
 #include <stdint.h>
@@ -36,19 +37,19 @@
 
 /**
  * @brief destructor based on compiler or
- * define MANUAL_CALL_LNDEL and call lndel
+ * define MANUAL_CALL_LNDEL and call lnlistdel
  * at end of main function or register to
  * atexit
  */
 #ifndef MANUAL_CALL_LNDEL
     #if defined(__GNUC__) || defined(__clang__)
-        void __attribute__((destructor)) lndel();
+        void __attribute__((destructor)) lnlistdel();
     #elif
-        #error unknown compiler For inout.h library an Issue at \
-        https://github.com/srilakshmikanthanp/InOut \
-        or define MANUAL_CALL_LNDEL before include and \
-        call Manually lndel at end of main or \
-        register with atexit
+        #error  unknown compiler For inout.h library an Issue at \
+                https://github.com/srilakshmikanthanp/InOut \
+                or define MANUAL_CALL_LNDEL before include and \
+                call Manually lndel at end of main or \
+                register with atexit
     #endif
 #endif
 
@@ -63,11 +64,11 @@ typedef char *string;
 typedef struct lnlist
 {
     // string ptr
-    string  ptr;
+    string ptr;
     // next ptr
     struct lnlist *nxt;
 
-}lnlist;
+} lnlist;
 
 /**
  * @brief Node to strings 
@@ -79,7 +80,7 @@ lnlist *node = NULL;
  * 
  * @param ptr pointer to string
  */
-bool lnadd(string sptr)
+bool lnlistadd(string sptr)
 {
     lnlist *data = NULL;
 
@@ -106,7 +107,7 @@ bool lnadd(string sptr)
 /**
  * @brief [internal] delets list
  */
-void lndel()
+void lnlistdel()
 {
     while (node->nxt != NULL)
     {
@@ -129,10 +130,10 @@ void lndel()
  * @param file file to read
  * @return string readed string
  */
-const string input(FILE* file, const string format, ...)
+const string input(FILE *file, const string format, ...)
 {
     // print the args
-    if(format != NULL)
+    if (format != NULL)
     {
         va_list vlis;
         va_start(vlis, format);
@@ -153,13 +154,13 @@ const string input(FILE* file, const string format, ...)
     char c = 0;
 
     // read and apped character
-    while((c = fgetc(file)) != '\n' && c != '\r' && c != EOF)
+    while ((c = fgetc(file)) != '\n' && c != '\r' && c != EOF)
     {
         // is enough room
-        if(size + 1 > capacity)
+        if (size + 1 > capacity)
         {
             // expand capacity
-            if(capacity < SIZE_MAX)
+            if (capacity < SIZE_MAX)
             {
                 ++capacity;
             }
@@ -170,10 +171,10 @@ const string input(FILE* file, const string format, ...)
             }
 
             // try to realloc
-            string temp = (string) realloc(buffer, capacity);
+            string temp = (string)realloc(buffer, capacity);
 
             // alloc fails
-            if(temp == NULL)
+            if (temp == NULL)
             {
                 free(buffer);
                 return NULL;
@@ -188,23 +189,23 @@ const string input(FILE* file, const string format, ...)
     }
 
     // size is 0 the ""
-    if(size == 0)
+    if (size == 0)
     {
         return "";
     }
 
     // if size is max then there is no room for NULL
-    if(size == SIZE_MAX)
+    if (size == SIZE_MAX)
     {
         free(buffer);
         return NULL;
     }
 
     //shrink buffer
-    string temp = (string) realloc(buffer, size + 1);
+    string temp = (string)realloc(buffer, size + 1);
 
     // if fails then return NULL
-    if(temp == NULL)
+    if (temp == NULL)
     {
         free(buffer);
         return NULL;
@@ -218,7 +219,7 @@ const string input(FILE* file, const string format, ...)
     buffer[size] = '\0';
 
     // add to list
-    if(!lnadd(buffer))
+    if (!lnlistadd(buffer))
     {
         free(buffer);
         return NULL;
@@ -226,6 +227,467 @@ const string input(FILE* file, const string format, ...)
 
     // finally done
     return buffer;
+}
+
+/**
+ * @brief returns signed char from string if any error then
+ * SCHAR_MIN or SCHAR_MAX is returned
+ * 
+ * @param str 
+ * @return signed char 
+ */
+signed char schar(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty or > 1 then return CHAR_MAX
+    if(str == NULL || len == 0 || len > 1)
+    {
+        return SCHAR_MAX;
+    }
+
+    // finally done
+    return str[0];
+}
+
+/**
+ * @brief returns unsigned char from string if any error then
+ * 0 or UCHAR_MAX is returned
+ * 
+ * @param str 
+ * @return signed char 
+ */
+unsigned char uchar(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty or > 1 then return CHAR_MAX
+    if(str == NULL || len == 0 || len > 1)
+    {
+        return UCHAR_MAX;
+    }
+
+    // finally done
+    return str[0];
+}
+
+/**
+ * @brief String to sort int if any erro occurs
+ * then returns SHRT_MAX or SHRT_MIN
+ * 
+ * @param str string
+ * @return short value
+ */
+signed short sshort(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return SHRT_MAX
+    if(str == NULL || len == 0)
+    {
+        return SHRT_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtol(str, &endptr, 0);
+
+    // if value too low for short
+    if(value < SHRT_MIN )
+    {
+        return SHRT_MIN;
+    }
+    
+    // if value too bog for short
+    if(value > SHRT_MAX)
+    {
+        return SHRT_MAX;
+    }
+
+    // if this string is not perfect short
+    if(*endptr != '\0')
+    {
+        return SHRT_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief returns unsigned short of string if any
+ * error occurs then 0 or USHRT_MAX is returned
+ * 
+ * @param str string value
+ * @return unsigned short value
+ */
+unsigned short ushort(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return SHRT_MAX
+    if(str == NULL || len == 0)
+    {
+        return USHRT_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    unsigned long  value  = strtoul(str, &endptr, 0);
+    
+    // if value too big for short
+    if(value > USHRT_MAX)
+    {
+        return USHRT_MAX;
+    }
+
+    // if this string is not perfect short
+    if(*endptr != '\0')
+    {
+        return USHRT_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to signed integer if any error
+ * then INT_MIN or INT_MAX is returned 
+ * 
+ * @param str string value
+ * @return signed int value
+ */
+signed int sint(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return INT_MAX
+    if(str == NULL || len == 0)
+    {
+        return INT_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtol(str, &endptr, 0);
+
+    // if value too low for int
+    if(value < INT_MIN )
+    {
+        return INT_MIN;
+    }
+    
+    // if value too big for int
+    if(value > INT_MAX)
+    {
+        return INT_MAX;
+    }
+
+    // if this string is not perfect int
+    if(*endptr != '\0')
+    {
+        return INT_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief returns unsigned int of string if any
+ * error occurs then 0 or UINT_MAX is returned
+ * 
+ * @param str string value
+ * @return unsigned int value
+ */
+unsigned int uint(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return UINT_MAX
+    if(str == NULL || len == 0)
+    {
+        return UINT_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    unsigned long  value  = strtoul(str, &endptr, 0);
+    
+    // if value too big for unsigned int
+    if(value > UINT_MAX)
+    {
+        return UINT_MAX;
+    }
+
+    // if this string is not perfect unsigned int
+    if(*endptr != '\0')
+    {
+        return UINT_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to signed long if any error
+ * then LONG_MIN or LONG_MAX is returned 
+ * 
+ * @param str string value
+ * @return signed long value
+ */
+signed long slong(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return LONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return LONG_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtol(str, &endptr, 0);
+
+    // if this string is not perfect int
+    if(*endptr != '\0')
+    {
+        return LONG_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief returns unsigned long of string if any
+ * error occurs then 0 or ULONG_MAX is returned
+ * 
+ * @param str string value
+ * @return unsigned long value
+ */
+unsigned long ulong(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return ULONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return ULONG_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    unsigned long  value  = strtoul(str, &endptr, 0);
+
+    // if this string is not perfect unsigned int
+    if(*endptr != '\0')
+    {
+        return ULONG_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to signed longlong if any error
+ * then LLONG_MIN or LLONG_MAX is returned 
+ * 
+ * @param str string value
+ * @return signed long long value
+ */
+signed long long slonglong(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return LONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return LLONG_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtoll(str, &endptr, 0);
+
+    // if this string is not perfect int
+    if(*endptr != '\0')
+    {
+        return LLONG_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief returns unsigned long long of string if any
+ * error occurs then 0 or ULONG_MAX is returned
+ * 
+ * @param str string value
+ * @return unsigned long long value
+ */
+unsigned long long ulonglong(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return ULONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return ULLONG_MAX;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    unsigned long  value  = strtoull(str, &endptr, 0);
+
+    // if this string is not perfect unsigned int
+    if(*endptr != '\0')
+    {
+        return ULLONG_MAX;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to float if any error occurs If the 
+ * converted value falls out of range of corresponding 
+ * return type, range error occurs and HUGE_VALF is returned. 
+ * If no conversion can be performed, ​0​ is returned.
+ * 
+ * @param str string value
+ * @return float value
+ */
+float sfloat(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return LONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return HUGE_VALF;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtof(str, &endptr);
+
+    // if this string is not perfect float
+    if(*endptr != '\0')
+    {
+        return HUGE_VALF;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to double if any error occurs If the 
+ * converted value falls out of range of corresponding 
+ * return type, range error occurs and HUGE_VAL, 
+ * is returned. If no conversion can be performed, ​
+ * 0​ is returned.
+ * 
+ * @param str string value
+ * @return double value
+ */
+double sdouble(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return LONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return HUGE_VAL;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in double
+    long  value  = strtod(str, &endptr);
+
+    // if this string is not perfect double
+    if(*endptr != '\0')
+    {
+        return HUGE_VAL;
+    }
+
+    // finally done
+    return value;
+}
+
+/**
+ * @brief string to long double if any error occurs If the 
+ * converted value falls out of range of corresponding 
+ * return type, range error occurs and HUGE_VALL is returned.
+ * If no conversion can be performed, ​0​ is returned.
+ * 
+ * @param str string value
+ * @return long double value
+ */
+long double slongdouble(const string str)
+{
+    // length
+    size_t len = strlen(str); 
+
+    // if str is NULL or empty then return LONG_MAX
+    if(str == NULL || len == 0)
+    {
+        return HUGE_VAL;
+    }
+
+    // end ptr for track
+    char *endptr = NULL;
+
+    // actual value in long
+    long  value  = strtof(str, &endptr);
+
+    // if this string is not perfect long double
+    if(*endptr != '\0')
+    {
+        return HUGE_VAL;
+    }
+
+    // finally done
+    return value;
 }
 
 #endif
