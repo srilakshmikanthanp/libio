@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This is an easy input output library for c especially for begineers/ This Library works on top off stdio.h but uses a input function that returns string that allocated on heap but it tracks of that with help of linked list that will be deallocated or freed after main.
+This is an easy input output library for c especially for begineers. This Library works on top off stdio.h but uses a input function that returns string that allocated on heap but it tracks of that with help of linked list that will be deallocated or freed after main. print function takes variable arg of char* you can conver buildin types to string easily with str that uses _Generic.
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -51,21 +51,31 @@ git clone https://github.com/srilakshmikanthanp/InOut/
 
 ### Installation
 
-This is Header only library so just download inout.h and use
+This is Header only library so just download [inout.h](src/srilakshmikanthanp/inout.h) and use
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Usage is very simple, simple example whould be,
+Usage is very simple, simple example whould be that takes some of types,
 
 ~~~c
 #include "inout.h"
 
 int main()
-{   
-  int val = sint(consoleinput("Ebter Number : "));
-  consoleprint("Hello You gave : ", str(val));
-  return 0;
+{
+    string valstr = consoleinput("Enter String : ");
+    consoleprint("You gave : ", valstr, "\n");
+
+    char valchr = signed_char(consoleinput("Enter Char : "));
+    consoleprint("You gave : ", str(valchr), "\n");
+
+    int valint = signed_int(consoleinput("Enter Int : "));
+    consoleprint("You gave : ", str(valint), "\n");
+
+    float valflt = signed_float(consoleinput("Enter Float : "));
+    consoleprint("You gave : ", str(valflt), "\n");
+
+    return 0;
 }
 ~~~
 
@@ -89,7 +99,7 @@ const string input(FILE *file, const string format, ...);
  * @param str 
  * @return signed char 
  */
-signed char schar(const string str);
+signed char signed_char(const string str);
 
 /**
  * @brief returns unsigned char from string if any error then
@@ -98,7 +108,7 @@ signed char schar(const string str);
  * @param str 
  * @return signed char 
  */
-unsigned char uchar(const string str);
+unsigned char unsigned_char(const string str);
 
 /**
  * @brief String to sort int if any erro occurs
@@ -107,7 +117,7 @@ unsigned char uchar(const string str);
  * @param str string
  * @return short value
  */
-signed short sshort(const string str);
+signed short signed_short(const string str);
 
 /**
  * @brief returns unsigned short of string if any
@@ -116,7 +126,7 @@ signed short sshort(const string str);
  * @param str string value
  * @return unsigned short value
  */
-unsigned short ushort(const string str);
+unsigned short unsigned_short(const string str);
 
 /**
  * @brief string to signed integer if any error
@@ -125,7 +135,7 @@ unsigned short ushort(const string str);
  * @param str string value
  * @return signed int value
  */
-signed int sint(const string str);
+signed int signed_int(const string str);
 
 /**
  * @brief returns unsigned int of string if any
@@ -134,7 +144,7 @@ signed int sint(const string str);
  * @param str string value
  * @return unsigned int value
  */
-unsigned int uint(const string str);
+unsigned int unsigned_int(const string str);
 
 /**
  * @brief string to signed long if any error
@@ -143,7 +153,7 @@ unsigned int uint(const string str);
  * @param str string value
  * @return signed long value
  */
-signed long slong(const string str);
+signed long signed_long(const string str);
 
 /**
  * @brief returns unsigned long of string if any
@@ -152,7 +162,7 @@ signed long slong(const string str);
  * @param str string value
  * @return unsigned long value
  */
-unsigned long ulong(const string str);
+unsigned long unsigned_long(const string str);
 
 /**
  * @brief string to signed longlong if any error
@@ -161,7 +171,7 @@ unsigned long ulong(const string str);
  * @param str string value
  * @return signed long long value
  */
-signed long long slonglong(const string str);
+signed long long signed_long_long(const string str);
 
 /**
  * @brief returns unsigned long long of string if any
@@ -170,7 +180,7 @@ signed long long slonglong(const string str);
  * @param str string value
  * @return unsigned long long value
  */
-unsigned long long ulonglong(const string str);
+unsigned long long unsigned_long_long(const string str);
 
 /**
  * @brief string to float if any error occurs If the 
@@ -181,7 +191,7 @@ unsigned long long ulonglong(const string str);
  * @param str string value
  * @return float value
  */
-float sfloat(const string str);
+float signed_float(const string str);
 
 /**
  * @brief string to double if any error occurs If the 
@@ -193,7 +203,7 @@ float sfloat(const string str);
  * @param str string value
  * @return double value
  */
-double sdouble(const string str);
+double signed_double(const string str);
 
 /**
  * @brief string to long double if any error occurs If the 
@@ -204,10 +214,10 @@ double sdouble(const string str);
  * @param str string value
  * @return long double value
  */
-long double slongdouble(const string str);
+long double signed_long_double(const string str);
 ~~~
 
-Avaibale output functions.
+Avaibale output functions,
 
 ~~~c
 /**
