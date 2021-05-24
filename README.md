@@ -61,7 +61,8 @@ Usage is very simple, example that operates on some of basic types in c,
 
 int main()
 {
-    // seemes like unnessery that string_str and str in valstr but it may help beginner better
+    // seemes like unnessery that string_str and str in 
+    // valstr but it may help understand beginner better
     string valstr = string_str(input("Enter String : "));
     print("You gave : ", str(valstr), "\n");
 
