@@ -56,7 +56,7 @@ This is Header only library so just download [inout.h](src/srilakshmikanthanp/in
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Usage is very simple, simple example whould be that takes some of types,
+Usage is very simple, example whould be that takes some of types,
 
 ~~~c
 #include "inout.h"
