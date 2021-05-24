@@ -22,9 +22,15 @@
  * SOFTWARE.
  */
 
+/**
+ * @brief start of library 
+ */
 #ifndef INOUT_HEADER
 #define INOUT_HEADER
 
+/*
+ * include required headers
+ */
 #include <stdio.h>
 #include <math.h>
 #include <stdarg.h>
@@ -45,11 +51,11 @@
     #if defined(__GNUC__) || defined(__clang__)
         void __attribute__((destructor)) lnlistdel();
     #elif
-        #error  unknown compiler For inout.h library an Issue at \
-                https://github.com/srilakshmikanthanp/InOut \
-                or define MANUAL_CALL_LNDEL before include and \
-                call Manually lnlistdel at end of main or \
-                register with atexit
+        #error unknown compiler For inout.h library an Issue at \
+               https://github.com/srilakshmikanthanp/InOut \
+               or define MANUAL_CALL_LNDEL before include and \
+               call Manually lnlistdel at end of main or \
+               register with atexit
     #endif
 #endif
 
@@ -109,7 +115,7 @@ bool lnlistadd(string sptr)
  */
 void lnlistdel()
 {
-    while (node->nxt != NULL)
+    while (node != NULL)
     {
         lnlist *next = node->nxt;
 
@@ -118,9 +124,6 @@ void lnlistdel()
 
         node = next;
     }
-
-    free(node->ptr);
-    free(node);
 }
 
 /**
@@ -239,10 +242,10 @@ const string input(FILE *file, const string format, ...)
 signed char schar(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty or > 1 then return CHAR_MAX
-    if(str == NULL || len == 0 || len > 1)
+    if (str == NULL || len == 0 || len > 1)
     {
         return SCHAR_MAX;
     }
@@ -261,10 +264,10 @@ signed char schar(const string str)
 unsigned char uchar(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty or > 1 then return CHAR_MAX
-    if(str == NULL || len == 0 || len > 1)
+    if (str == NULL || len == 0 || len > 1)
     {
         return UCHAR_MAX;
     }
@@ -283,10 +286,10 @@ unsigned char uchar(const string str)
 signed short sshort(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return SHRT_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return SHRT_MAX;
     }
@@ -295,22 +298,22 @@ signed short sshort(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtol(str, &endptr, 0);
+    long value = strtol(str, &endptr, 0);
 
     // if value too low for short
-    if(value < SHRT_MIN )
+    if (value < SHRT_MIN)
     {
         return SHRT_MIN;
     }
-    
+
     // if value too bog for short
-    if(value > SHRT_MAX)
+    if (value > SHRT_MAX)
     {
         return SHRT_MAX;
     }
 
     // if this string is not perfect short
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return SHRT_MAX;
     }
@@ -329,10 +332,10 @@ signed short sshort(const string str)
 unsigned short ushort(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return SHRT_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return USHRT_MAX;
     }
@@ -341,16 +344,16 @@ unsigned short ushort(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    unsigned long  value  = strtoul(str, &endptr, 0);
-    
+    unsigned long value = strtoul(str, &endptr, 0);
+
     // if value too big for short
-    if(value > USHRT_MAX)
+    if (value > USHRT_MAX)
     {
         return USHRT_MAX;
     }
 
     // if this string is not perfect short
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return USHRT_MAX;
     }
@@ -369,10 +372,10 @@ unsigned short ushort(const string str)
 signed int sint(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return INT_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return INT_MAX;
     }
@@ -381,22 +384,22 @@ signed int sint(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtol(str, &endptr, 0);
+    long value = strtol(str, &endptr, 0);
 
     // if value too low for int
-    if(value < INT_MIN )
+    if (value < INT_MIN)
     {
         return INT_MIN;
     }
-    
+
     // if value too big for int
-    if(value > INT_MAX)
+    if (value > INT_MAX)
     {
         return INT_MAX;
     }
 
     // if this string is not perfect int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return INT_MAX;
     }
@@ -415,10 +418,10 @@ signed int sint(const string str)
 unsigned int uint(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return UINT_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return UINT_MAX;
     }
@@ -427,16 +430,16 @@ unsigned int uint(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    unsigned long  value  = strtoul(str, &endptr, 0);
-    
+    unsigned long value = strtoul(str, &endptr, 0);
+
     // if value too big for unsigned int
-    if(value > UINT_MAX)
+    if (value > UINT_MAX)
     {
         return UINT_MAX;
     }
 
     // if this string is not perfect unsigned int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return UINT_MAX;
     }
@@ -455,10 +458,10 @@ unsigned int uint(const string str)
 signed long slong(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return LONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return LONG_MAX;
     }
@@ -467,10 +470,10 @@ signed long slong(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtol(str, &endptr, 0);
+    long value = strtol(str, &endptr, 0);
 
     // if this string is not perfect int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return LONG_MAX;
     }
@@ -489,10 +492,10 @@ signed long slong(const string str)
 unsigned long ulong(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return ULONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return ULONG_MAX;
     }
@@ -501,10 +504,10 @@ unsigned long ulong(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    unsigned long  value  = strtoul(str, &endptr, 0);
+    unsigned long value = strtoul(str, &endptr, 0);
 
     // if this string is not perfect unsigned int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return ULONG_MAX;
     }
@@ -523,10 +526,10 @@ unsigned long ulong(const string str)
 signed long long slonglong(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return LONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return LLONG_MAX;
     }
@@ -535,10 +538,10 @@ signed long long slonglong(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtoll(str, &endptr, 0);
+    long value = strtoll(str, &endptr, 0);
 
     // if this string is not perfect int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return LLONG_MAX;
     }
@@ -557,10 +560,10 @@ signed long long slonglong(const string str)
 unsigned long long ulonglong(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return ULONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return ULLONG_MAX;
     }
@@ -569,10 +572,10 @@ unsigned long long ulonglong(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    unsigned long  value  = strtoull(str, &endptr, 0);
+    unsigned long value = strtoull(str, &endptr, 0);
 
     // if this string is not perfect unsigned int
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return ULLONG_MAX;
     }
@@ -593,10 +596,10 @@ unsigned long long ulonglong(const string str)
 float sfloat(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return LONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return HUGE_VALF;
     }
@@ -605,10 +608,10 @@ float sfloat(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtof(str, &endptr);
+    long value = strtof(str, &endptr);
 
     // if this string is not perfect float
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return HUGE_VALF;
     }
@@ -630,10 +633,10 @@ float sfloat(const string str)
 double sdouble(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return LONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return HUGE_VAL;
     }
@@ -642,10 +645,10 @@ double sdouble(const string str)
     char *endptr = NULL;
 
     // actual value in double
-    long  value  = strtod(str, &endptr);
+    long value = strtod(str, &endptr);
 
     // if this string is not perfect double
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return HUGE_VAL;
     }
@@ -666,10 +669,10 @@ double sdouble(const string str)
 long double slongdouble(const string str)
 {
     // length
-    size_t len = strlen(str); 
+    size_t len = strlen(str);
 
     // if str is NULL or empty then return LONG_MAX
-    if(str == NULL || len == 0)
+    if (str == NULL || len == 0)
     {
         return HUGE_VAL;
     }
@@ -678,10 +681,10 @@ long double slongdouble(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long  value  = strtof(str, &endptr);
+    long value = strtof(str, &endptr);
 
     // if this string is not perfect long double
-    if(*endptr != '\0')
+    if (*endptr != '\0')
     {
         return HUGE_VAL;
     }
@@ -690,4 +693,378 @@ long double slongdouble(const string str)
     return value;
 }
 
+/**
+ * @brief [internal] print the out to file
+ * 
+ * @param count count of arguments
+ * @param ... char*
+ */
+void basic_print(FILE *file, int count, ...)
+{
+    // varg init
+    va_list valist;
+
+    // va start the valist
+    va_start(valist, count);
+
+    // print iteratively
+    for (int i = 0; i < count; ++i)
+    {
+        char *arg = va_arg(valist, char *);
+
+        if (arg == NULL)
+        {
+            fputs("<NULL>", file);
+        }
+        else
+        {
+            fputs(arg, file);
+        }
+    }
+
+    // end va_arg
+    va_end(valist);
+}
+
+/**
+ * @brief prints to a File
+ * 
+ * @param File file to print
+ * @param ... char*
+ */
+#define print(File, ...) basic_print(File,            \
+    sizeof((char *[]){__VA_ARGS__}) / sizeof(char *), \
+    __VA_ARGS__ \
+)
+
+/**
+ * @brief signed char to string 
+ * 
+ * @param ch char
+ * @return string string 
+ */
+string scharstr(signed char ch)
+{
+    string str = calloc(1, sizeof(signed char));
+
+    if (str == NULL)
+    {
+        return NULL;
+    }
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    str[0] = ch;
+    
+    return str;
+}
+
+/**
+ * @brief undigned char to string
+ * 
+ * @param ch char
+ * @return string string 
+ */
+string ucharstr(unsigned char ch)
+{
+    string str = calloc(1, sizeof(unsigned char));
+
+    if (str == NULL)
+    {
+        return NULL;
+    }
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    str[0] = ch;
+    
+    return str;
+}
+
+/**
+ * @brief signed short to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string sshortstr(signed short val)
+{
+    size_t len = snprintf(NULL, 0, "%hd", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%d", val);
+
+    return str;
+}
+
+/**
+ * @brief unsigned short to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string ushortstr(signed short val)
+{
+    size_t len = snprintf(NULL, 0, "%hu", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%u", val);
+
+    return str;
+}
+
+/**
+ * @brief signed int to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string sintstr(signed int val)
+{
+    size_t len = snprintf(NULL, 0, "%d", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%d", val);
+
+    return str;
+}
+
+/**
+ * @brief unsigned int to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string uintstr(signed short val)
+{
+    size_t len = snprintf(NULL, 0, "%u", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%u", val);
+
+    return str;
+}
+
+/**
+ * @brief signed long to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string slongstr(signed long val)
+{
+    size_t len = snprintf(NULL, 0, "%ld", val);
+    string str = calloc(len +1, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%ld", val);
+
+    return str;
+}
+
+/**
+ * @brief unsigned long to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string ulongstr(signed long val)
+{
+    size_t len = snprintf(NULL, 0, "%lu", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%lu", val);
+
+    return str;
+}
+
+/**
+ * @brief signed long long to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string slonglongstr(signed long long val)
+{
+    size_t len = snprintf(NULL, 0, "%lld", val);
+    string str = calloc(len +1, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%lld", val);
+
+    return str;
+}
+
+/**
+ * @brief unsigned long long to string
+ * 
+ * @param val value
+ * @return string string
+ */
+string ulonglongstr(signed long long val)
+{
+    size_t len = snprintf(NULL, 0, "%llu", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%llu", val);
+
+    return str;
+}
+
+/**
+ * @brief float to string
+ * 
+ * @param val 
+ * @return string 
+ */
+string sfloatstr(float val)
+{
+    size_t len = snprintf(NULL, 0, "%f", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%f", val);
+
+    return str;
+}
+
+/**
+ * @brief double to string
+ * 
+ * @param val 
+ * @return string 
+ */
+string sdoublestr(double val)
+{
+    size_t len = snprintf(NULL, 0, "%lf", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%lf", val);
+
+    return str;
+}
+
+/**
+ * @brief long double to string
+ * 
+ * @param val 
+ * @return string 
+ */
+string slongdoublestr(long double val)
+{
+    size_t len = snprintf(NULL, 0, "%L", val);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%L", val);
+
+    return str;
+}
+
+
+/**
+ * @brief str converts a value into string 
+ * 
+ * @param val value to convert
+ */
+#define str(val) _Generic((val),                 \
+    char               : scharstr,               \
+    signed char        : scharstr,               \
+    unsigned char      : ucharstr,               \
+    signed short       : sshortstr,              \
+    unsigned short     : ushortstr,              \
+    signed int         : sintstr,                \
+    unsigned int       : uintstr,                \
+    signed long        : slongstr,               \
+    unsigned long      : ulongstr,               \
+    signed long long   : slonglongstr,           \
+    unsigned long long : ulonglongstr,           \
+    float              : sfloatstr,              \
+    double             : sdoublestr,             \
+    long double        : slongdoublestr          \
+)(val)
+
+/**
+ * @brief console input with stdin default
+ */
+#define consoleinput(...) input(stdin, __VA_ARGS__)
+
+/**
+ * @brief console output with stdout default 
+ */
+#define consoleprint(...) print(stdout, __VA_ARGS__)
+
+/**
+ * @brief end of library 
+ */
 #endif

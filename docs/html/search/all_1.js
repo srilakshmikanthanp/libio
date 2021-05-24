@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['lnlist_2',['lnlist',['../structlnlist.html',1,'lnlist'],['../inout_8h.html#a91108ffce8d423c87d0e4d8cea56aa26',1,'lnlist():&#160;inout.h']]],
-  ['lnlistadd_3',['lnlistadd',['../inout_8h.html#a7cd6cc720aa99c09dcd82fadf6b79d38',1,'inout.h']]],
-  ['lnlistdel_4',['lnlistdel',['../inout_8h.html#a58b84cb17a1f2ee75c9a5089bf512106',1,'inout.h']]]
+  ['consoleinput_1',['consoleinput',['../inout_8h.html#a40a2e7925a1ae7f0884c6028e31b5db4',1,'inout.h']]],
+  ['consoleprint_2',['consoleprint',['../inout_8h.html#a754e06cfa328eef2ea3da02301d1c39a',1,'inout.h']]]
 ];

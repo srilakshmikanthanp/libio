@@ -67,6 +67,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -93,10 +94,25 @@ Classes</h2></td></tr>
   <a href="structlnlist.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a85e419dc3d562a72154dac57850de626"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a85e419dc3d562a72154dac57850de626">print</a>(File, ...)</td></tr>
+<tr class="memdesc:a85e419dc3d562a72154dac57850de626"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints to a File  <a href="inout_8h.html#a85e419dc3d562a72154dac57850de626">More...</a><br /></td></tr>
+<tr class="separator:a85e419dc3d562a72154dac57850de626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada75c15a19ad82f96da2eb149fb0d9ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>(val)</td></tr>
+<tr class="memdesc:ada75c15a19ad82f96da2eb149fb0d9ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">str converts a value into string  <a href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">More...</a><br /></td></tr>
+<tr class="separator:ada75c15a19ad82f96da2eb149fb0d9ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a2e7925a1ae7f0884c6028e31b5db4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a40a2e7925a1ae7f0884c6028e31b5db4">consoleinput</a>(...)&#160;&#160;&#160;<a class="el" href="inout_8h.html#a7ad3eeccd70c6596280744073f297b99">input</a>(stdin, __VA_ARGS__)</td></tr>
+<tr class="memdesc:a40a2e7925a1ae7f0884c6028e31b5db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">console input with stdin default  <a href="inout_8h.html#a40a2e7925a1ae7f0884c6028e31b5db4">More...</a><br /></td></tr>
+<tr class="separator:a40a2e7925a1ae7f0884c6028e31b5db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a754e06cfa328eef2ea3da02301d1c39a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a754e06cfa328eef2ea3da02301d1c39a">consoleprint</a>(...)&#160;&#160;&#160;<a class="el" href="inout_8h.html#a85e419dc3d562a72154dac57850de626">print</a>(stdout, __VA_ARGS__)</td></tr>
+<tr class="memdesc:a754e06cfa328eef2ea3da02301d1c39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">console output with stdout default  <a href="inout_8h.html#a754e06cfa328eef2ea3da02301d1c39a">More...</a><br /></td></tr>
+<tr class="separator:a754e06cfa328eef2ea3da02301d1c39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a4505c08c065b48840a30eedd9845cce2"><td class="memItemLeft" align="right" valign="top">typedef char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a></td></tr>
-<tr class="memdesc:a4505c08c065b48840a30eedd9845cce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">destructor based on compiler or define MANUAL_CALL_LNDEL and call lnlistdel at end of main function or register to atexit  <a href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">More...</a><br /></td></tr>
+<tr class="memdesc:a4505c08c065b48840a30eedd9845cce2"><td class="mdescLeft">&#160;</td><td class="mdescRight">start of library  <a href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">More...</a><br /></td></tr>
 <tr class="separator:a4505c08c065b48840a30eedd9845cce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91108ffce8d423c87d0e4d8cea56aa26"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlnlist.html">lnlist</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a91108ffce8d423c87d0e4d8cea56aa26">lnlist</a></td></tr>
 <tr class="memdesc:a91108ffce8d423c87d0e4d8cea56aa26"><td class="mdescLeft">&#160;</td><td class="mdescRight">[internal] linked list <br  />
@@ -114,45 +130,87 @@ Functions</h2></td></tr>
 <tr class="memitem:a7ad3eeccd70c6596280744073f297b99"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a7ad3eeccd70c6596280744073f297b99">input</a> (FILE *file, const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> format,...)</td></tr>
 <tr class="memdesc:a7ad3eeccd70c6596280744073f297b99"><td class="mdescLeft">&#160;</td><td class="mdescRight">inputs line from a FILE and returns it back to use as const NULL if fails.  <a href="inout_8h.html#a7ad3eeccd70c6596280744073f297b99">More...</a><br /></td></tr>
 <tr class="separator:a7ad3eeccd70c6596280744073f297b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae8afc794f3fa73627a793205fd43c23"><td class="memItemLeft" align="right" valign="top">signed char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aae8afc794f3fa73627a793205fd43c23">schar</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:aae8afc794f3fa73627a793205fd43c23"><td class="memItemLeft" align="right" valign="top">signed char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aae8afc794f3fa73627a793205fd43c23">schar</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:aae8afc794f3fa73627a793205fd43c23"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns signed char from string if any error then SCHAR_MIN or SCHAR_MAX is returned  <a href="inout_8h.html#aae8afc794f3fa73627a793205fd43c23">More...</a><br /></td></tr>
 <tr class="separator:aae8afc794f3fa73627a793205fd43c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba303213f27098dc2e6603c2bbbc64ff"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aba303213f27098dc2e6603c2bbbc64ff">uchar</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:aba303213f27098dc2e6603c2bbbc64ff"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aba303213f27098dc2e6603c2bbbc64ff">uchar</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:aba303213f27098dc2e6603c2bbbc64ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns unsigned char from string if any error then 0 or UCHAR_MAX is returned  <a href="inout_8h.html#aba303213f27098dc2e6603c2bbbc64ff">More...</a><br /></td></tr>
 <tr class="separator:aba303213f27098dc2e6603c2bbbc64ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d6d54a44ea809c0d8c2cfb5f99b82fa"><td class="memItemLeft" align="right" valign="top">signed short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a7d6d54a44ea809c0d8c2cfb5f99b82fa">sshort</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a7d6d54a44ea809c0d8c2cfb5f99b82fa"><td class="memItemLeft" align="right" valign="top">signed short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a7d6d54a44ea809c0d8c2cfb5f99b82fa">sshort</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a7d6d54a44ea809c0d8c2cfb5f99b82fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">String to sort int if any erro occurs then returns SHRT_MAX or SHRT_MIN.  <a href="inout_8h.html#a7d6d54a44ea809c0d8c2cfb5f99b82fa">More...</a><br /></td></tr>
 <tr class="separator:a7d6d54a44ea809c0d8c2cfb5f99b82fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50bded79341504327bdf62acec4701e0"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a50bded79341504327bdf62acec4701e0">ushort</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a50bded79341504327bdf62acec4701e0"><td class="memItemLeft" align="right" valign="top">unsigned short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a50bded79341504327bdf62acec4701e0">ushort</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a50bded79341504327bdf62acec4701e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns unsigned short of string if any error occurs then 0 or USHRT_MAX is returned  <a href="inout_8h.html#a50bded79341504327bdf62acec4701e0">More...</a><br /></td></tr>
 <tr class="separator:a50bded79341504327bdf62acec4701e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaad8d5c3eece3e74baf16cecc0ea3332"><td class="memItemLeft" align="right" valign="top">signed int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aaad8d5c3eece3e74baf16cecc0ea3332">sint</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:aaad8d5c3eece3e74baf16cecc0ea3332"><td class="memItemLeft" align="right" valign="top">signed int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aaad8d5c3eece3e74baf16cecc0ea3332">sint</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:aaad8d5c3eece3e74baf16cecc0ea3332"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to signed integer if any error then INT_MIN or INT_MAX is returned  <a href="inout_8h.html#aaad8d5c3eece3e74baf16cecc0ea3332">More...</a><br /></td></tr>
 <tr class="separator:aaad8d5c3eece3e74baf16cecc0ea3332"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9df9168eb5c37a53ac24e33d6b9e29f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ab9df9168eb5c37a53ac24e33d6b9e29f">uint</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:ab9df9168eb5c37a53ac24e33d6b9e29f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ab9df9168eb5c37a53ac24e33d6b9e29f">uint</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:ab9df9168eb5c37a53ac24e33d6b9e29f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns unsigned int of string if any error occurs then 0 or UINT_MAX is returned  <a href="inout_8h.html#ab9df9168eb5c37a53ac24e33d6b9e29f">More...</a><br /></td></tr>
 <tr class="separator:ab9df9168eb5c37a53ac24e33d6b9e29f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01933523c6b2de3d881fcc7aef01d0d9"><td class="memItemLeft" align="right" valign="top">signed long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a01933523c6b2de3d881fcc7aef01d0d9">slong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a01933523c6b2de3d881fcc7aef01d0d9"><td class="memItemLeft" align="right" valign="top">signed long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a01933523c6b2de3d881fcc7aef01d0d9">slong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a01933523c6b2de3d881fcc7aef01d0d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to signed long if any error then LONG_MIN or LONG_MAX is returned  <a href="inout_8h.html#a01933523c6b2de3d881fcc7aef01d0d9">More...</a><br /></td></tr>
 <tr class="separator:a01933523c6b2de3d881fcc7aef01d0d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7f3d1318f88b12dba6193a3b5e17eff"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ab7f3d1318f88b12dba6193a3b5e17eff">ulong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:ab7f3d1318f88b12dba6193a3b5e17eff"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ab7f3d1318f88b12dba6193a3b5e17eff">ulong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:ab7f3d1318f88b12dba6193a3b5e17eff"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns unsigned long of string if any error occurs then 0 or ULONG_MAX is returned  <a href="inout_8h.html#ab7f3d1318f88b12dba6193a3b5e17eff">More...</a><br /></td></tr>
 <tr class="separator:ab7f3d1318f88b12dba6193a3b5e17eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4be54f0e9a30de673363275f38804795"><td class="memItemLeft" align="right" valign="top">signed long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a4be54f0e9a30de673363275f38804795">slonglong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a4be54f0e9a30de673363275f38804795"><td class="memItemLeft" align="right" valign="top">signed long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a4be54f0e9a30de673363275f38804795">slonglong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a4be54f0e9a30de673363275f38804795"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to signed longlong if any error then LLONG_MIN or LLONG_MAX is returned  <a href="inout_8h.html#a4be54f0e9a30de673363275f38804795">More...</a><br /></td></tr>
 <tr class="separator:a4be54f0e9a30de673363275f38804795"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1c55ad041caa50e4cf9c3468f8c616f"><td class="memItemLeft" align="right" valign="top">unsigned long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aa1c55ad041caa50e4cf9c3468f8c616f">ulonglong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:aa1c55ad041caa50e4cf9c3468f8c616f"><td class="memItemLeft" align="right" valign="top">unsigned long long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aa1c55ad041caa50e4cf9c3468f8c616f">ulonglong</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:aa1c55ad041caa50e4cf9c3468f8c616f"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns unsigned long long of string if any error occurs then 0 or ULONG_MAX is returned  <a href="inout_8h.html#aa1c55ad041caa50e4cf9c3468f8c616f">More...</a><br /></td></tr>
 <tr class="separator:aa1c55ad041caa50e4cf9c3468f8c616f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d9556ab3ffa88b3c156d6c0265bb2b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a8d9556ab3ffa88b3c156d6c0265bb2b0">sfloat</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a8d9556ab3ffa88b3c156d6c0265bb2b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a8d9556ab3ffa88b3c156d6c0265bb2b0">sfloat</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a8d9556ab3ffa88b3c156d6c0265bb2b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to float if any error occurs If the converted value falls out of range of corresponding return type, range error occurs and HUGE_VALF is returned. If no conversion can be performed, ​0​ is returned.  <a href="inout_8h.html#a8d9556ab3ffa88b3c156d6c0265bb2b0">More...</a><br /></td></tr>
 <tr class="separator:a8d9556ab3ffa88b3c156d6c0265bb2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6b2e0315903151b99062e5d5484ec7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a3d6b2e0315903151b99062e5d5484ec7">sdouble</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:a3d6b2e0315903151b99062e5d5484ec7"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a3d6b2e0315903151b99062e5d5484ec7">sdouble</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:a3d6b2e0315903151b99062e5d5484ec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to double if any error occurs If the converted value falls out of range of corresponding return type, range error occurs and HUGE_VAL, is returned. If no conversion can be performed, ​ 0​ is returned.  <a href="inout_8h.html#a3d6b2e0315903151b99062e5d5484ec7">More...</a><br /></td></tr>
 <tr class="separator:a3d6b2e0315903151b99062e5d5484ec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af13c002941d4d369cd4f83021bf7f922"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#af13c002941d4d369cd4f83021bf7f922">slongdouble</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> str)</td></tr>
+<tr class="memitem:af13c002941d4d369cd4f83021bf7f922"><td class="memItemLeft" align="right" valign="top">long double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#af13c002941d4d369cd4f83021bf7f922">slongdouble</a> (const <a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> <a class="el" href="inout_8h.html#ada75c15a19ad82f96da2eb149fb0d9ae">str</a>)</td></tr>
 <tr class="memdesc:af13c002941d4d369cd4f83021bf7f922"><td class="mdescLeft">&#160;</td><td class="mdescRight">string to long double if any error occurs If the converted value falls out of range of corresponding return type, range error occurs and HUGE_VALL is returned. If no conversion can be performed, ​0​ is returned.  <a href="inout_8h.html#af13c002941d4d369cd4f83021bf7f922">More...</a><br /></td></tr>
 <tr class="separator:af13c002941d4d369cd4f83021bf7f922"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a5ffbe3365f113137c12d208f5fbc51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a9a5ffbe3365f113137c12d208f5fbc51">basic_print</a> (FILE *file, int count,...)</td></tr>
+<tr class="memdesc:a9a5ffbe3365f113137c12d208f5fbc51"><td class="mdescLeft">&#160;</td><td class="mdescRight">[internal] print the out to file  <a href="inout_8h.html#a9a5ffbe3365f113137c12d208f5fbc51">More...</a><br /></td></tr>
+<tr class="separator:a9a5ffbe3365f113137c12d208f5fbc51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdfb347bba37bc892d2e5705def25d9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#acdfb347bba37bc892d2e5705def25d9b">scharstr</a> (signed char ch)</td></tr>
+<tr class="memdesc:acdfb347bba37bc892d2e5705def25d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">signed char to string  <a href="inout_8h.html#acdfb347bba37bc892d2e5705def25d9b">More...</a><br /></td></tr>
+<tr class="separator:acdfb347bba37bc892d2e5705def25d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae35ab071e95e6132c981dcd4ac20c1aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ae35ab071e95e6132c981dcd4ac20c1aa">ucharstr</a> (unsigned char ch)</td></tr>
+<tr class="memdesc:ae35ab071e95e6132c981dcd4ac20c1aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">undigned char to string  <a href="inout_8h.html#ae35ab071e95e6132c981dcd4ac20c1aa">More...</a><br /></td></tr>
+<tr class="separator:ae35ab071e95e6132c981dcd4ac20c1aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeef2c5dda697bf3c3865bc249e86f079"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aeef2c5dda697bf3c3865bc249e86f079">sshortstr</a> (signed short val)</td></tr>
+<tr class="memdesc:aeef2c5dda697bf3c3865bc249e86f079"><td class="mdescLeft">&#160;</td><td class="mdescRight">signed short to string  <a href="inout_8h.html#aeef2c5dda697bf3c3865bc249e86f079">More...</a><br /></td></tr>
+<tr class="separator:aeef2c5dda697bf3c3865bc249e86f079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12ce75c1e0bfb4c768d5112278242e9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a12ce75c1e0bfb4c768d5112278242e9a">ushortstr</a> (signed short val)</td></tr>
+<tr class="memdesc:a12ce75c1e0bfb4c768d5112278242e9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">unsigned short to string  <a href="inout_8h.html#a12ce75c1e0bfb4c768d5112278242e9a">More...</a><br /></td></tr>
+<tr class="separator:a12ce75c1e0bfb4c768d5112278242e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d320f7add95562cfbfd7a7258dbc00b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a2d320f7add95562cfbfd7a7258dbc00b">sintstr</a> (signed int val)</td></tr>
+<tr class="memdesc:a2d320f7add95562cfbfd7a7258dbc00b"><td class="mdescLeft">&#160;</td><td class="mdescRight">signed int to string  <a href="inout_8h.html#a2d320f7add95562cfbfd7a7258dbc00b">More...</a><br /></td></tr>
+<tr class="separator:a2d320f7add95562cfbfd7a7258dbc00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b59d01bf6924c626e13229466bf851"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a34b59d01bf6924c626e13229466bf851">uintstr</a> (signed short val)</td></tr>
+<tr class="memdesc:a34b59d01bf6924c626e13229466bf851"><td class="mdescLeft">&#160;</td><td class="mdescRight">unsigned int to string  <a href="inout_8h.html#a34b59d01bf6924c626e13229466bf851">More...</a><br /></td></tr>
+<tr class="separator:a34b59d01bf6924c626e13229466bf851"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4d70c2d1a422be8b2d3f99f8c776bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a4a4d70c2d1a422be8b2d3f99f8c776bb">slongstr</a> (signed long val)</td></tr>
+<tr class="memdesc:a4a4d70c2d1a422be8b2d3f99f8c776bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">signed long to string  <a href="inout_8h.html#a4a4d70c2d1a422be8b2d3f99f8c776bb">More...</a><br /></td></tr>
+<tr class="separator:a4a4d70c2d1a422be8b2d3f99f8c776bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedc38f827fc492f57a78dba96c6a3fee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#aedc38f827fc492f57a78dba96c6a3fee">ulongstr</a> (signed long val)</td></tr>
+<tr class="memdesc:aedc38f827fc492f57a78dba96c6a3fee"><td class="mdescLeft">&#160;</td><td class="mdescRight">unsigned long to string  <a href="inout_8h.html#aedc38f827fc492f57a78dba96c6a3fee">More...</a><br /></td></tr>
+<tr class="separator:aedc38f827fc492f57a78dba96c6a3fee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae86f7f69344a224eb7660f6aef8fbfbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ae86f7f69344a224eb7660f6aef8fbfbc">slonglongstr</a> (signed long long val)</td></tr>
+<tr class="memdesc:ae86f7f69344a224eb7660f6aef8fbfbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">signed long long to string  <a href="inout_8h.html#ae86f7f69344a224eb7660f6aef8fbfbc">More...</a><br /></td></tr>
+<tr class="separator:ae86f7f69344a224eb7660f6aef8fbfbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14f31a274fa071e805ae5d7b721b3fb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a14f31a274fa071e805ae5d7b721b3fb4">ulonglongstr</a> (signed long long val)</td></tr>
+<tr class="memdesc:a14f31a274fa071e805ae5d7b721b3fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">unsigned long long to string  <a href="inout_8h.html#a14f31a274fa071e805ae5d7b721b3fb4">More...</a><br /></td></tr>
+<tr class="separator:a14f31a274fa071e805ae5d7b721b3fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e15f3f1827c36e5571452ff281922fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a8e15f3f1827c36e5571452ff281922fc">sfloatstr</a> (float val)</td></tr>
+<tr class="memdesc:a8e15f3f1827c36e5571452ff281922fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">float to string  <a href="inout_8h.html#a8e15f3f1827c36e5571452ff281922fc">More...</a><br /></td></tr>
+<tr class="separator:a8e15f3f1827c36e5571452ff281922fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61129b3e9d30df433f226b67291778d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#a61129b3e9d30df433f226b67291778d0">sdoublestr</a> (double val)</td></tr>
+<tr class="memdesc:a61129b3e9d30df433f226b67291778d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">double to string  <a href="inout_8h.html#a61129b3e9d30df433f226b67291778d0">More...</a><br /></td></tr>
+<tr class="separator:a61129b3e9d30df433f226b67291778d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5578f8e9a4fe01222f27db1708c616c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="inout_8h.html#ab5578f8e9a4fe01222f27db1708c616c">slongdoublestr</a> (long double val)</td></tr>
+<tr class="memdesc:ab5578f8e9a4fe01222f27db1708c616c"><td class="mdescLeft">&#160;</td><td class="mdescRight">long double to string  <a href="inout_8h.html#ab5578f8e9a4fe01222f27db1708c616c">More...</a><br /></td></tr>
+<tr class="separator:ab5578f8e9a4fe01222f27db1708c616c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -160,6 +218,152 @@ Variables</h2></td></tr>
 <tr class="memdesc:ac10e09aacfacc0ae55fd12375b0a4513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node to strings.  <a href="inout_8h.html#ac10e09aacfacc0ae55fd12375b0a4513">More...</a><br /></td></tr>
 <tr class="separator:ac10e09aacfacc0ae55fd12375b0a4513"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a40a2e7925a1ae7f0884c6028e31b5db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a2e7925a1ae7f0884c6028e31b5db4">&#9670;&nbsp;</a></span>consoleinput</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define consoleinput</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="inout_8h.html#a7ad3eeccd70c6596280744073f297b99">input</a>(stdin, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>console input with stdin default </p>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l01060">1060</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a754e06cfa328eef2ea3da02301d1c39a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a754e06cfa328eef2ea3da02301d1c39a">&#9670;&nbsp;</a></span>consoleprint</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define consoleprint</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em></td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="inout_8h.html#a85e419dc3d562a72154dac57850de626">print</a>(stdout, __VA_ARGS__)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>console output with stdout default </p>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l01065">1065</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a85e419dc3d562a72154dac57850de626"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85e419dc3d562a72154dac57850de626">&#9670;&nbsp;</a></span>print</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define print</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">File, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code" href="inout_8h.html#a9a5ffbe3365f113137c12d208f5fbc51">basic_print</a>(File,            \</div>
+<div class="line">    <span class="keyword">sizeof</span>((<span class="keywordtype">char</span> *[]){__VA_ARGS__}) / <span class="keyword">sizeof</span>(<span class="keywordtype">char</span> *), \</div>
+<div class="line">    __VA_ARGS__ \</div>
+<div class="line">)</div>
+<div class="ttc" id="ainout_8h_html_a9a5ffbe3365f113137c12d208f5fbc51"><div class="ttname"><a href="inout_8h.html#a9a5ffbe3365f113137c12d208f5fbc51">basic_print</a></div><div class="ttdeci">void basic_print(FILE *file, int count,...)</div><div class="ttdoc">[internal] print the out to file</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00702">inout.h:702</a></div></div>
+</div><!-- fragment -->
+<p>prints to a File </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">File</td><td>file to print </td></tr>
+    <tr><td class="paramname">...</td><td>char* </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00735">735</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="ada75c15a19ad82f96da2eb149fb0d9ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada75c15a19ad82f96da2eb149fb0d9ae">&#9670;&nbsp;</a></span>str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define str</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    _Generic((val),                 \</div>
+<div class="line">    <span class="keywordtype">char</span>               : <a class="code" href="inout_8h.html#acdfb347bba37bc892d2e5705def25d9b">scharstr</a>,               \</div>
+<div class="line">    <span class="keywordtype">signed</span> <span class="keywordtype">char</span>        : <a class="code" href="inout_8h.html#acdfb347bba37bc892d2e5705def25d9b">scharstr</a>,               \</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>      : <a class="code" href="inout_8h.html#ae35ab071e95e6132c981dcd4ac20c1aa">ucharstr</a>,               \</div>
+<div class="line">    <span class="keywordtype">signed</span> <span class="keywordtype">short</span>       : <a class="code" href="inout_8h.html#aeef2c5dda697bf3c3865bc249e86f079">sshortstr</a>,              \</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>     : <a class="code" href="inout_8h.html#a12ce75c1e0bfb4c768d5112278242e9a">ushortstr</a>,              \</div>
+<div class="line">    <span class="keywordtype">signed</span> <span class="keywordtype">int</span>         : <a class="code" href="inout_8h.html#a2d320f7add95562cfbfd7a7258dbc00b">sintstr</a>,                \</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>       : <a class="code" href="inout_8h.html#a34b59d01bf6924c626e13229466bf851">uintstr</a>,                \</div>
+<div class="line">    <span class="keywordtype">signed</span> <span class="keywordtype">long</span>        : <a class="code" href="inout_8h.html#a4a4d70c2d1a422be8b2d3f99f8c776bb">slongstr</a>,               \</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span>      : <a class="code" href="inout_8h.html#aedc38f827fc492f57a78dba96c6a3fee">ulongstr</a>,               \</div>
+<div class="line">    <span class="keywordtype">signed</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span>   : <a class="code" href="inout_8h.html#ae86f7f69344a224eb7660f6aef8fbfbc">slonglongstr</a>,           \</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">long</span> : <a class="code" href="inout_8h.html#a14f31a274fa071e805ae5d7b721b3fb4">ulonglongstr</a>,           \</div>
+<div class="line">    <span class="keywordtype">float</span>              : <a class="code" href="inout_8h.html#a8e15f3f1827c36e5571452ff281922fc">sfloatstr</a>,              \</div>
+<div class="line">    <span class="keywordtype">double</span>             : <a class="code" href="inout_8h.html#a61129b3e9d30df433f226b67291778d0">sdoublestr</a>,             \</div>
+<div class="line">    <span class="keywordtype">long</span> <span class="keywordtype">double</span>        : <a class="code" href="inout_8h.html#ab5578f8e9a4fe01222f27db1708c616c">slongdoublestr</a>          \</div>
+<div class="line">)(val)</div>
+<div class="ttc" id="ainout_8h_html_a12ce75c1e0bfb4c768d5112278242e9a"><div class="ttname"><a href="inout_8h.html#a12ce75c1e0bfb4c768d5112278242e9a">ushortstr</a></div><div class="ttdeci">string ushortstr(signed short val)</div><div class="ttdoc">unsigned short to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00820">inout.h:820</a></div></div>
+<div class="ttc" id="ainout_8h_html_a14f31a274fa071e805ae5d7b721b3fb4"><div class="ttname"><a href="inout_8h.html#a14f31a274fa071e805ae5d7b721b3fb4">ulonglongstr</a></div><div class="ttdeci">string ulonglongstr(signed long long val)</div><div class="ttdoc">unsigned long long to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00952">inout.h:952</a></div></div>
+<div class="ttc" id="ainout_8h_html_a2d320f7add95562cfbfd7a7258dbc00b"><div class="ttname"><a href="inout_8h.html#a2d320f7add95562cfbfd7a7258dbc00b">sintstr</a></div><div class="ttdeci">string sintstr(signed int val)</div><div class="ttdoc">signed int to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00842">inout.h:842</a></div></div>
+<div class="ttc" id="ainout_8h_html_a34b59d01bf6924c626e13229466bf851"><div class="ttname"><a href="inout_8h.html#a34b59d01bf6924c626e13229466bf851">uintstr</a></div><div class="ttdeci">string uintstr(signed short val)</div><div class="ttdoc">unsigned int to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00864">inout.h:864</a></div></div>
+<div class="ttc" id="ainout_8h_html_a4a4d70c2d1a422be8b2d3f99f8c776bb"><div class="ttname"><a href="inout_8h.html#a4a4d70c2d1a422be8b2d3f99f8c776bb">slongstr</a></div><div class="ttdeci">string slongstr(signed long val)</div><div class="ttdoc">signed long to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00886">inout.h:886</a></div></div>
+<div class="ttc" id="ainout_8h_html_a61129b3e9d30df433f226b67291778d0"><div class="ttname"><a href="inout_8h.html#a61129b3e9d30df433f226b67291778d0">sdoublestr</a></div><div class="ttdeci">string sdoublestr(double val)</div><div class="ttdoc">double to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00996">inout.h:996</a></div></div>
+<div class="ttc" id="ainout_8h_html_a8e15f3f1827c36e5571452ff281922fc"><div class="ttname"><a href="inout_8h.html#a8e15f3f1827c36e5571452ff281922fc">sfloatstr</a></div><div class="ttdeci">string sfloatstr(float val)</div><div class="ttdoc">float to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00974">inout.h:974</a></div></div>
+<div class="ttc" id="ainout_8h_html_ab5578f8e9a4fe01222f27db1708c616c"><div class="ttname"><a href="inout_8h.html#ab5578f8e9a4fe01222f27db1708c616c">slongdoublestr</a></div><div class="ttdeci">string slongdoublestr(long double val)</div><div class="ttdoc">long double to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l01018">inout.h:1018</a></div></div>
+<div class="ttc" id="ainout_8h_html_acdfb347bba37bc892d2e5705def25d9b"><div class="ttname"><a href="inout_8h.html#acdfb347bba37bc892d2e5705def25d9b">scharstr</a></div><div class="ttdeci">string scharstr(signed char ch)</div><div class="ttdoc">signed char to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00746">inout.h:746</a></div></div>
+<div class="ttc" id="ainout_8h_html_ae35ab071e95e6132c981dcd4ac20c1aa"><div class="ttname"><a href="inout_8h.html#ae35ab071e95e6132c981dcd4ac20c1aa">ucharstr</a></div><div class="ttdeci">string ucharstr(unsigned char ch)</div><div class="ttdoc">undigned char to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00772">inout.h:772</a></div></div>
+<div class="ttc" id="ainout_8h_html_ae86f7f69344a224eb7660f6aef8fbfbc"><div class="ttname"><a href="inout_8h.html#ae86f7f69344a224eb7660f6aef8fbfbc">slonglongstr</a></div><div class="ttdeci">string slonglongstr(signed long long val)</div><div class="ttdoc">signed long long to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00930">inout.h:930</a></div></div>
+<div class="ttc" id="ainout_8h_html_aedc38f827fc492f57a78dba96c6a3fee"><div class="ttname"><a href="inout_8h.html#aedc38f827fc492f57a78dba96c6a3fee">ulongstr</a></div><div class="ttdeci">string ulongstr(signed long val)</div><div class="ttdoc">unsigned long to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00908">inout.h:908</a></div></div>
+<div class="ttc" id="ainout_8h_html_aeef2c5dda697bf3c3865bc249e86f079"><div class="ttname"><a href="inout_8h.html#aeef2c5dda697bf3c3865bc249e86f079">sshortstr</a></div><div class="ttdeci">string sshortstr(signed short val)</div><div class="ttdoc">signed short to string</div><div class="ttdef"><b>Definition:</b> <a href="inout_8h_source.html#l00798">inout.h:798</a></div></div>
+</div><!-- fragment -->
+<p>str converts a value into string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value to convert </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l01040">1040</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a91108ffce8d423c87d0e4d8cea56aa26"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a91108ffce8d423c87d0e4d8cea56aa26">&#9670;&nbsp;</a></span>lnlist</h2>
@@ -190,14 +394,60 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>destructor based on compiler or define MANUAL_CALL_LNDEL and call lnlistdel at end of main function or register to atexit </p>
+<p>start of library </p>
+<p>destructor based on compiler or define MANUAL_CALL_LNDEL and call lnlistdel at end of main function or register to atexit</p>
 <p>string representation of this library </p>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00059">59</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00065">65</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a9a5ffbe3365f113137c12d208f5fbc51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a5ffbe3365f113137c12d208f5fbc51">&#9670;&nbsp;</a></span>basic_print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void basic_print </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>[internal] print the out to file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>count of arguments </td></tr>
+    <tr><td class="paramname">...</td><td>char* </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00702">702</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
 <a id="a7ad3eeccd70c6596280744073f297b99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7ad3eeccd70c6596280744073f297b99">&#9670;&nbsp;</a></span>input()</h2>
 
@@ -239,7 +489,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>string readed string </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00133">133</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00136">136</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -267,7 +517,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00083">83</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00089">89</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -288,7 +538,7 @@ Variables</h2></td></tr>
 
 <p>[internal] delets list </p>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00110">110</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00116">116</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -317,7 +567,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>signed char </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00239">239</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00242">242</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="acdfb347bba37bc892d2e5705def25d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdfb347bba37bc892d2e5705def25d9b">&#9670;&nbsp;</a></span>scharstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> scharstr </td>
+          <td>(</td>
+          <td class="paramtype">signed char&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signed char to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>char </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00746">746</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +625,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>double value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00630">630</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00633">633</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a61129b3e9d30df433f226b67291778d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61129b3e9d30df433f226b67291778d0">&#9670;&nbsp;</a></span>sdoublestr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> sdoublestr </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>double to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00996">996</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -375,7 +683,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>float value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00593">593</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00596">596</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a8e15f3f1827c36e5571452ff281922fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e15f3f1827c36e5571452ff281922fc">&#9670;&nbsp;</a></span>sfloatstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> sfloatstr </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>float to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00974">974</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -404,7 +741,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>signed int value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00369">369</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00372">372</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a2d320f7add95562cfbfd7a7258dbc00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d320f7add95562cfbfd7a7258dbc00b">&#9670;&nbsp;</a></span>sintstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> sintstr </td>
+          <td>(</td>
+          <td class="paramtype">signed int&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signed int to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00842">842</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -433,7 +799,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>signed long value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00455">455</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00458">458</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -462,7 +828,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>long double value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00666">666</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00669">669</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="ab5578f8e9a4fe01222f27db1708c616c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5578f8e9a4fe01222f27db1708c616c">&#9670;&nbsp;</a></span>slongdoublestr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> slongdoublestr </td>
+          <td>(</td>
+          <td class="paramtype">long double&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>long double to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l01018">1018</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -491,7 +886,65 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>signed long long value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00523">523</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00526">526</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="ae86f7f69344a224eb7660f6aef8fbfbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae86f7f69344a224eb7660f6aef8fbfbc">&#9670;&nbsp;</a></span>slonglongstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> slonglongstr </td>
+          <td>(</td>
+          <td class="paramtype">signed long long&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signed long long to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00930">930</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a4a4d70c2d1a422be8b2d3f99f8c776bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4d70c2d1a422be8b2d3f99f8c776bb">&#9670;&nbsp;</a></span>slongstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> slongstr </td>
+          <td>(</td>
+          <td class="paramtype">signed long&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signed long to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00886">886</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -520,7 +973,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>short value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00283">283</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00286">286</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="aeef2c5dda697bf3c3865bc249e86f079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeef2c5dda697bf3c3865bc249e86f079">&#9670;&nbsp;</a></span>sshortstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> sshortstr </td>
+          <td>(</td>
+          <td class="paramtype">signed short&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>signed short to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00798">798</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -549,7 +1031,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>signed char </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00261">261</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00264">264</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="ae35ab071e95e6132c981dcd4ac20c1aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae35ab071e95e6132c981dcd4ac20c1aa">&#9670;&nbsp;</a></span>ucharstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> ucharstr </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>undigned char to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>char </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00772">772</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -578,7 +1089,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>unsigned int value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00415">415</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00418">418</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a34b59d01bf6924c626e13229466bf851"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b59d01bf6924c626e13229466bf851">&#9670;&nbsp;</a></span>uintstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> uintstr </td>
+          <td>(</td>
+          <td class="paramtype">signed short&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>unsigned int to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00864">864</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -607,7 +1147,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>unsigned long value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00489">489</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00492">492</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -636,7 +1176,65 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>unsigned long long value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00557">557</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00560">560</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a14f31a274fa071e805ae5d7b721b3fb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14f31a274fa071e805ae5d7b721b3fb4">&#9670;&nbsp;</a></span>ulonglongstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> ulonglongstr </td>
+          <td>(</td>
+          <td class="paramtype">signed long long&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>unsigned long long to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00952">952</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="aedc38f827fc492f57a78dba96c6a3fee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedc38f827fc492f57a78dba96c6a3fee">&#9670;&nbsp;</a></span>ulongstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> ulongstr </td>
+          <td>(</td>
+          <td class="paramtype">signed long&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>unsigned long to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00908">908</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -665,7 +1263,36 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>unsigned short value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00329">329</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00332">332</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+
+</div>
+</div>
+<a id="a12ce75c1e0bfb4c768d5112278242e9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12ce75c1e0bfb4c768d5112278242e9a">&#9670;&nbsp;</a></span>ushortstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="inout_8h.html#a4505c08c065b48840a30eedd9845cce2">string</a> ushortstr </td>
+          <td>(</td>
+          <td class="paramtype">signed short&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>unsigned short to string </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00820">820</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>
@@ -684,7 +1311,7 @@ Variables</h2></td></tr>
 
 <p>Node to strings. </p>
 
-<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00076">76</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inout_8h_source.html#l00082">82</a> of file <a class="el" href="inout_8h_source.html">inout.h</a>.</p>
 
 </div>
 </div>

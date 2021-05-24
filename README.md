@@ -62,14 +62,14 @@ Usage is very simple, simple example whould be,
 #include "inout.h"
 
 int main()
-{
-    signed int value = sint(input(stdin, "Enter Number : "));
-    printf("Value = %d", value);
-    return 0;
+{   
+  int val = sint(consoleinput("Ebter Number : "));
+  consoleprint("Hello You gave : ", str(val));
+  return 0;
 }
 ~~~
 
-Available Functions,
+Available input functions,
 
 ~~~c
 /**
@@ -205,6 +205,40 @@ double sdouble(const string str);
  * @return long double value
  */
 long double slongdouble(const string str);
+~~~
+
+Avaibale output functions.
+
+~~~c
+/**
+ * @brief print function
+ * 
+ * @param file file to print
+ * @param ...  char* 
+ */
+void print(FILE* file, ...);
+
+/**
+ * @brief convert definded types to string
+ * 
+ * @param val build in types
+ * @return string value
+ */
+string str(type val);
+~~~
+
+Console defaults,
+
+~~~c
+/**
+ * @brief console input with stdin default
+ */
+#define consoleinput(...) input(stdin, __VA_ARGS__)
+
+/**
+ * @brief console output with stdout default 
+ */
+#define consoleprint(...) print(stdout, __VA_ARGS__)
 ~~~
 
 _For more examples, please refer to the Documentation_

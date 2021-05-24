@@ -1,8 +1,13 @@
 #include "../src/srilakshmikanthanp/inout.h"
 
 int main()
-{
-    int value = sint(input(stdin, "Enter Number : "));
-    printf("%d", value);
+{   
+    // input data
+    int val = sint(consoleinput("Ebter Number : "));
+
+    // print out
+    consoleprint("Hello You gave : ", str(val));
+
+    // return
     return 0;
 }

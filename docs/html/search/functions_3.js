@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['uchar_35',['uchar',['../inout_8h.html#aba303213f27098dc2e6603c2bbbc64ff',1,'inout.h']]],
-  ['uint_36',['uint',['../inout_8h.html#ab9df9168eb5c37a53ac24e33d6b9e29f',1,'inout.h']]],
-  ['ulong_37',['ulong',['../inout_8h.html#ab7f3d1318f88b12dba6193a3b5e17eff',1,'inout.h']]],
-  ['ulonglong_38',['ulonglong',['../inout_8h.html#aa1c55ad041caa50e4cf9c3468f8c616f',1,'inout.h']]],
-  ['ushort_39',['ushort',['../inout_8h.html#a50bded79341504327bdf62acec4701e0',1,'inout.h']]]
+  ['schar_46',['schar',['../inout_8h.html#aae8afc794f3fa73627a793205fd43c23',1,'inout.h']]],
+  ['scharstr_47',['scharstr',['../inout_8h.html#acdfb347bba37bc892d2e5705def25d9b',1,'inout.h']]],
+  ['sdouble_48',['sdouble',['../inout_8h.html#a3d6b2e0315903151b99062e5d5484ec7',1,'inout.h']]],
+  ['sdoublestr_49',['sdoublestr',['../inout_8h.html#a61129b3e9d30df433f226b67291778d0',1,'inout.h']]],
+  ['sfloat_50',['sfloat',['../inout_8h.html#a8d9556ab3ffa88b3c156d6c0265bb2b0',1,'inout.h']]],
+  ['sfloatstr_51',['sfloatstr',['../inout_8h.html#a8e15f3f1827c36e5571452ff281922fc',1,'inout.h']]],
+  ['sint_52',['sint',['../inout_8h.html#aaad8d5c3eece3e74baf16cecc0ea3332',1,'inout.h']]],
+  ['sintstr_53',['sintstr',['../inout_8h.html#a2d320f7add95562cfbfd7a7258dbc00b',1,'inout.h']]],
+  ['slong_54',['slong',['../inout_8h.html#a01933523c6b2de3d881fcc7aef01d0d9',1,'inout.h']]],
+  ['slongdouble_55',['slongdouble',['../inout_8h.html#af13c002941d4d369cd4f83021bf7f922',1,'inout.h']]],
+  ['slongdoublestr_56',['slongdoublestr',['../inout_8h.html#ab5578f8e9a4fe01222f27db1708c616c',1,'inout.h']]],
+  ['slonglong_57',['slonglong',['../inout_8h.html#a4be54f0e9a30de673363275f38804795',1,'inout.h']]],
+  ['slonglongstr_58',['slonglongstr',['../inout_8h.html#ae86f7f69344a224eb7660f6aef8fbfbc',1,'inout.h']]],
+  ['slongstr_59',['slongstr',['../inout_8h.html#a4a4d70c2d1a422be8b2d3f99f8c776bb',1,'inout.h']]],
+  ['sshort_60',['sshort',['../inout_8h.html#a7d6d54a44ea809c0d8c2cfb5f99b82fa',1,'inout.h']]],
+  ['sshortstr_61',['sshortstr',['../inout_8h.html#aeef2c5dda697bf3c3865bc249e86f079',1,'inout.h']]]
 ];
