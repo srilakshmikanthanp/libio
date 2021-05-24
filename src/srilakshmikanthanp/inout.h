@@ -48,7 +48,7 @@
         #error  unknown compiler For inout.h library an Issue at \
                 https://github.com/srilakshmikanthanp/InOut \
                 or define MANUAL_CALL_LNDEL before include and \
-                call Manually lndel at end of main or \
+                call Manually lnlistdel at end of main or \
                 register with atexit
     #endif
 #endif
