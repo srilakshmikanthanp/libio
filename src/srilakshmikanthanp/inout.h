@@ -52,13 +52,13 @@
 
 #ifndef MANUAL_CALL_LNDEL
     #if defined(__GNUC__) || defined(__clang__)
-        void __attribute__((destructor)) lnlistdel();
+        void __attribute__((destructor)) lnlistdel(void);
     #elif
-        #error unknown compiler For inout.h library an Issue at \
-               https://github.com/srilakshmikanthanp/InOut \
-               or define MANUAL_CALL_LNDEL before include and \
-               call Manually lnlistdel at end of main or \
-               register with atexit
+        #error "unknown compiler For inout.h library an Issue at
+               "https://github.com/srilakshmikanthanp/InOut"
+               "or define MANUAL_CALL_LNDEL before include and"
+               "call Manually lnlistdel at end of main or"
+               "register with atexit"
     #endif
 #endif
 
@@ -116,7 +116,7 @@ bool lnlistadd(string sptr)
 /**
  * @brief [internal] delets list
  */
-void lnlistdel()
+void lnlistdel(void)
 {
     while (node != NULL)
     {
@@ -148,10 +148,10 @@ const string read(FILE *file, const string format, ...)
     }
 
     // capacity of buffer
-    int capacity = 0;
+    size_t capacity = 0;
 
     // size of buffer
-    int size = 0;
+    size_t size = 0;
 
     // string buffer
     string buffer = NULL;
@@ -552,7 +552,7 @@ signed long long signed_long_long(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    long value = strtoll(str, &endptr, 0);
+    long long value = strtoll(str, &endptr, 0);
 
     // if this string is not perfect int
     if (*endptr != '\0')
@@ -586,7 +586,7 @@ unsigned long long unsigned_long_long(const string str)
     char *endptr = NULL;
 
     // actual value in long
-    unsigned long value = strtoull(str, &endptr, 0);
+    unsigned long long value = strtoull(str, &endptr, 0);
 
     // if this string is not perfect unsigned int
     if (*endptr != '\0')
@@ -746,7 +746,7 @@ void basic_write(FILE *file, int count, ...)
  * @param File file to print
  * @param ... char*
  */
-#define write(File, ...) basic_print(File,              \
+#define write(File, ...) basic_write(File,              \
     sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
     __VA_ARGS__                                         \
 )
@@ -955,7 +955,7 @@ string unsigned_long_to_str(unsigned long val)
 string signed_long_long_to_str(signed long long val)
 {
     size_t len = snprintf(NULL, 0, "%lld", val);
-    string str = calloc(len +1, sizeof(char));
+    string str = calloc(++len, sizeof(char));
 
     if(!lnlistadd(str))
     {
