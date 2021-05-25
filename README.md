@@ -107,7 +107,7 @@ void print(...);
 string str(type val);
 ~~~
 
-**This is not a prototype as implemented they use some trick on macros and _Generic to achive this**
+**_This is not a prototype as implemented they use some trick on macros and _Generic to achive this_**
 
 A Basic Example,
 
