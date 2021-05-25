@@ -707,6 +707,24 @@ long double signed_long_double(const string str)
     return value;
 }
 
+#define get(T, FUNC) _Generic( (T) 0,            \
+    char *             : string_str,             \
+    char               : signed_char,            \
+    signed char        : signed_char,            \
+    unsigned char      : unsigned_char,          \
+    signed short       : signed_short,           \
+    unsigned short     : unsigned_short,         \
+    signed int         : signed_int,             \
+    unsigned int       : unsigned_int,           \
+    signed long        : signed_long,            \
+    unsigned long      : unsigned_long,          \
+    signed long long   : signed_long_long,       \
+    unsigned long long : unsigned_long_long,     \
+    float              : signed_float,           \
+    double             : signed_double,          \
+    long double        : signed_long_double      \
+)(FUNC)
+
 /**
  * @brief [internal] print the out to file
  * 
