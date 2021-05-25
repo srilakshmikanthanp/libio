@@ -54,7 +54,7 @@
     #if defined(__GNUC__) || defined(__clang__)
         void __attribute__((destructor)) lnlistdel(void);
     #elif
-        #error "unknown compiler For inout.h library an Issue at
+        #error "unknown compiler For inout.h library an Issue at"
                "https://github.com/srilakshmikanthanp/InOut"
                "or define MANUAL_CALL_LNDEL before include and"
                "call Manually lnlistdel at end of main or"
