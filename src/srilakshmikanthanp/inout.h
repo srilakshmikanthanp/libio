@@ -842,7 +842,7 @@ string signed_short_to_str(signed short val)
  * @param val value
  * @return string string
  */
-string unsigned_short_to_str(signed short val)
+string unsigned_short_to_str(unsigned short val)
 {
     size_t len = snprintf(NULL, 0, "%hu", val);
     string str = calloc(++len, sizeof(char));
@@ -886,7 +886,7 @@ string signed_int_to_str(signed int val)
  * @param val value
  * @return string string
  */
-string unsigned_int_to_str(signed short val)
+string unsigned_int_to_str(unsigned int val)
 {
     size_t len = snprintf(NULL, 0, "%u", val);
     string str = calloc(++len, sizeof(char));
@@ -930,7 +930,7 @@ string signed_long_to_str(signed long val)
  * @param val value
  * @return string string
  */
-string unsigned_long_to_str(signed long val)
+string unsigned_long_to_str(unsigned long val)
 {
     size_t len = snprintf(NULL, 0, "%lu", val);
     string str = calloc(++len, sizeof(char));
@@ -974,7 +974,7 @@ string signed_long_long_to_str(signed long long val)
  * @param val value
  * @return string string
  */
-string unsigned_long_long_to_str(signed long long val)
+string unsigned_long_long_to_str(unsigned long long val)
 {
     size_t len = snprintf(NULL, 0, "%llu", val);
     string str = calloc(++len, sizeof(char));
