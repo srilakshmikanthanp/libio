@@ -54,14 +54,14 @@ int print(...);
 string str(type val);
 ~~~
 
-A simple example whould be followed,
+A simple example whould be followed like this,
 
 ~~~c
 #include "inout.h"
 
 int main()
 {
-    // Here get and str is unnessery because it is alderdy string but may help begineers
+    // Here get and str is unnesseary because it is alderdy string but may help begineers to understand better
     string valstr = get(string, input("Enter String : "));
     print("You gave : ", str(valstr), "\n");
 
