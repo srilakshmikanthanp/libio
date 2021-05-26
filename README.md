@@ -1,15 +1,15 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">InOut</h3>
+  <h3 align="center">libio</h3>
   <p align="center">
     Easy Input Output Library For C
     <br />
-    <a href="https://srilakshmikanthanp.github.io/InOut/docs/"><strong>Explore the docs »</strong></a>
+    <a href="https://srilakshmikanthanp.github.io/libio/docs/"><strong>Explore the docs »</strong></a>
     <br />
-    <a href="https://github.com/srilakshmikanthanp/InOut/issues">Report Bug</a>
+    <a href="https://github.com/srilakshmikanthanp/libio/issues">Report Bug</a>
     ·
-    <a href="https://github.com/srilakshmikanthanp/InOut/issues">Request Feature</a>
+    <a href="https://github.com/srilakshmikanthanp/libio/issues">Request Feature</a>
   </p>
 </p>
 
@@ -44,7 +44,7 @@ This is an easy input output library for c especially for begineers. This Librar
 To get a local copy up and running follow these simple steps.
 
 ~~~shell
-git clone https://github.com/srilakshmikanthanp/InOut/
+git clone https://github.com/srilakshmikanthanp/libio/
 ~~~
 
 ### Installation
@@ -113,7 +113,7 @@ This is not a prototype as implemented they use some trick on macros and _Generi
 A Basic Example,
 
 ~~~c
-#include "inout.h"
+#include "libio.h"
 
 int main()
 {
@@ -153,4 +153,4 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Project Link: [https://github.com/srilakshmikanthanp/InOut](https://github.com/srilakshmikanthanp/InOut)
+Project Link: [https://github.com/srilakshmikanthanp/libio](https://github.com/srilakshmikanthanp/libio)
