@@ -49,7 +49,7 @@ git clone https://github.com/srilakshmikanthanp/libio/
 
 ### Installation
 
-This is Header only library so just download [libio.h](src/srilakshmikanthanp/libio.h) and use it.
+This is Header only library so just download [libio.h](src/srilakshmikanthanp/libio.h).
 
 <!-- USAGE EXAMPLES -->
 ## Usage
