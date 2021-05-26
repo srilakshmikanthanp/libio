@@ -21,6 +21,7 @@
                 "-Wswitch-enum",
                 "-Wconversion",
                 "-Wunreachable-code",
+                "-std=c11",
                 "-g",
                 "${file}",
                 "-o",

@@ -50,13 +50,13 @@
  * @author Sri Lakshmi Kanthan P
  */
 
-#ifndef MANUAL_CALL_LNDEL
+#ifndef MANUAL_CALL_LNLISTDEL
     #if defined(__GNUC__) || defined(__clang__)
         void __attribute__((destructor)) lnlistdel(void);
     #elif
         #error "unknown compiler For inout.h library an Issue at"
                "https://github.com/srilakshmikanthanp/InOut"
-               "or define MANUAL_CALL_LNDEL before include and"
+               "or define MANUAL_CALL_LNLISTDEL before include and"
                "call Manually lnlistdel at end of main or"
                "register with atexit"
     #endif
@@ -242,7 +242,7 @@ const string read(FILE *file, const string format, ...)
  * @param str 
  * @return signed char 
  */
-signed char signed_char(const string str)
+signed char str_to_signed_char(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -275,7 +275,7 @@ string string_str(string str)
  * @param str 
  * @return signed char 
  */
-unsigned char unsigned_char(const string str)
+unsigned char str_to_unsigned_char(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -297,7 +297,7 @@ unsigned char unsigned_char(const string str)
  * @param str string
  * @return short value
  */
-signed short signed_short(const string str)
+signed short str_to_signed_short(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -343,7 +343,7 @@ signed short signed_short(const string str)
  * @param str string value
  * @return unsigned short value
  */
-unsigned short unsigned_short(const string str)
+unsigned short str_to_unsigned_short(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -383,7 +383,7 @@ unsigned short unsigned_short(const string str)
  * @param str string value
  * @return signed int value
  */
-signed int signed_int(const string str)
+signed int str_to_signed_int(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -429,7 +429,7 @@ signed int signed_int(const string str)
  * @param str string value
  * @return unsigned int value
  */
-unsigned int unsigned_int(const string str)
+unsigned int str_to_unsigned_int(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -469,7 +469,7 @@ unsigned int unsigned_int(const string str)
  * @param str string value
  * @return signed long value
  */
-signed long signed_long(const string str)
+signed long str_to_signed_long(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -503,7 +503,7 @@ signed long signed_long(const string str)
  * @param str string value
  * @return unsigned long value
  */
-unsigned long unsigned_long(const string str)
+unsigned long str_to_unsigned_long(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -537,7 +537,7 @@ unsigned long unsigned_long(const string str)
  * @param str string value
  * @return signed long long value
  */
-signed long long signed_long_long(const string str)
+signed long long str_to_signed_long_long(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -571,7 +571,7 @@ signed long long signed_long_long(const string str)
  * @param str string value
  * @return unsigned long long value
  */
-unsigned long long unsigned_long_long(const string str)
+unsigned long long str_to_unsigned_long_long(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -607,7 +607,7 @@ unsigned long long unsigned_long_long(const string str)
  * @param str string value
  * @return float value
  */
-float signed_float(const string str)
+float str_to_signed_float(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -644,7 +644,7 @@ float signed_float(const string str)
  * @param str string value
  * @return double value
  */
-double signed_double(const string str)
+double str_to_signed_double(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -680,7 +680,7 @@ double signed_double(const string str)
  * @param str string value
  * @return long double value
  */
-long double signed_long_double(const string str)
+long double str_to_signed_long_double(const string str)
 {
     // length
     size_t len = strlen(str);
@@ -707,22 +707,22 @@ long double signed_long_double(const string str)
     return value;
 }
 
-#define get(T, FUNC) _Generic( (T) 0,            \
-    char *             : string_str,             \
-    char               : signed_char,            \
-    signed char        : signed_char,            \
-    unsigned char      : unsigned_char,          \
-    signed short       : signed_short,           \
-    unsigned short     : unsigned_short,         \
-    signed int         : signed_int,             \
-    unsigned int       : unsigned_int,           \
-    signed long        : signed_long,            \
-    unsigned long      : unsigned_long,          \
-    signed long long   : signed_long_long,       \
-    unsigned long long : unsigned_long_long,     \
-    float              : signed_float,           \
-    double             : signed_double,          \
-    long double        : signed_long_double      \
+#define get(T, FUNC) _Generic( (T) 0,                   \
+    char *             : string_str,                    \
+    char               : str_to_signed_char,            \
+    signed char        : str_to_signed_char,            \
+    unsigned char      : str_to_unsigned_char,          \
+    signed short       : str_to_signed_short,           \
+    unsigned short     : str_to_unsigned_short,         \
+    signed int         : str_to_signed_int,             \
+    unsigned int       : str_to_unsigned_int,           \
+    signed long        : str_to_signed_long,            \
+    unsigned long      : str_to_unsigned_long,          \
+    signed long long   : str_to_signed_long_long,       \
+    unsigned long long : str_to_unsigned_long_long,     \
+    float              : str_to_signed_float,           \
+    double             : str_to_signed_double,          \
+    long double        : str_to_signed_long_double      \
 )(FUNC)
 
 /**
@@ -730,9 +730,13 @@ long double signed_long_double(const string str)
  * 
  * @param count count of arguments
  * @param ... char*
+ * @return number of args printed
  */
-void basic_write(FILE *file, int count, ...)
+int basic_write(FILE *file, size_t count, ...)
 {
+    // printed count
+    size_t pcount = 0;
+
     // varg init
     va_list valist;
 
@@ -744,18 +748,21 @@ void basic_write(FILE *file, int count, ...)
     {
         char *arg = va_arg(valist, char *);
 
-        if (arg == NULL)
+        if (arg != NULL)
         {
-            fputs("<NULL>", file);
+            fputs(arg, file);
         }
         else
         {
-            fputs(arg, file);
+            break;
         }
     }
 
     // end va_arg
     va_end(valist);
+
+    // return
+    return pcount;
 }
 
 /**

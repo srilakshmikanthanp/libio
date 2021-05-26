@@ -5,7 +5,7 @@
   <p align="center">
     Easy Input Output Library For C
     <br />
-    <a href="https://srilakshmikanthanp.github.io/InOut/docs/html/"><strong>Explore the docs »</strong></a>
+    <a href="https://srilakshmikanthanp.github.io/InOut/docs/"><strong>Explore the docs »</strong></a>
     <br />
     <a href="https://github.com/srilakshmikanthanp/InOut/issues">Report Bug</a>
     ·
@@ -49,7 +49,7 @@ git clone https://github.com/srilakshmikanthanp/InOut/
 
 ### Installation
 
-This is Header only library so just download [inout.h](src/srilakshmikanthanp/inout.h) and use it.
+This is Header only library so just download [libio.h](src/srilakshmikanthanp/libio.h) and use it.
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -61,7 +61,7 @@ To get input use this below functions,
  * @brief read a line of string from file
  * 
  * @param file file to read
- * @param format format spec like printf
+ * @param format format spec like printf to print
  * @param ... varargs
  * 
  * @return line of string from file
@@ -90,13 +90,14 @@ To put output use below functions,
  * 
  * @param File file to print
  * @param ... strings
+ * @return number of args printed
  */
-void write(File *file, ...);
+int write(File *file, ...);
 
 /**
  * @brief same as write but stdout as defaul
  */
-void print(...);
+int print(...);
 
 /**
  * @brief converts a type to string
@@ -107,7 +108,7 @@ void print(...);
 string str(type val);
 ~~~
 
-**_This is not a prototype as implemented they use some trick on macros and _Generic to achive this_**
+This is not a prototype as implemented they use some trick on macros and _Generic to achive this
 
 A Basic Example,
 

@@ -1,4 +1,4 @@
-#include "../src/srilakshmikanthanp/inout.h"
+#include "../src/srilakshmikanthanp/libio.h"
 
 int main()
 {
