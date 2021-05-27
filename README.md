@@ -38,6 +38,8 @@
 
 This is an easy input output library for c especially for begineers. This Library works on top of stdio.h but uses a input function that returns string that allocated on heap but it tracks of that with help of linked list that will be deallocated or freed after main. print function takes variable arg of char* you can convert build in types to string easily with str that uses _Generic to operate on various types.
 
+**_⚠️ I made this library for fun and for begineers NOT FOR PRODUCTION because this library use much space on heap that going to relesed only relesed afer main_:warning:**
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
