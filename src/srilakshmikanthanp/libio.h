@@ -22,15 +22,9 @@
  * SOFTWARE.
  */
 
-/**
- * @brief start of library 
- */
 #ifndef INOUT_HEADER
 #define INOUT_HEADER
 
-/*
- * include required headers
- */
 #include <stdio.h>
 #include <math.h>
 #include <stdarg.h>
@@ -42,7 +36,7 @@
 #include <stdbool.h>
 
 /**
- * @mainpage InOut
+ * @mainpage libio
  *
  * @brief This is input/ouput library for c which
  * makes work easy especially for beginers see in
@@ -54,7 +48,7 @@
     #if defined(__GNUC__) || defined(__clang__)
         void __attribute__((destructor)) lnlistdel(void);
     #elif
-        #error "unknown compiler For inout.h library an Issue at"
+        #error "unknown compiler For libio.h library an Issue at"
                "https://github.com/srilakshmikanthanp/InOut"
                "or define MANUAL_CALL_LNLISTDEL before include and"
                "call Manually lnlistdel at end of main or"
@@ -236,6 +230,22 @@ const string read(FILE *file, const string format, ...)
 }
 
 /**
+ * @brief console input with stdin default
+ */
+#define input(...) read(stdin, __VA_ARGS__)
+
+/**
+ * @brief return same string
+ * 
+ * @param str string
+ * @return string value
+ */
+string str_to_string(string str)
+{
+    return str;
+}
+
+/**
  * @brief returns signed char from string if any error then
  * SCHAR_MIN or SCHAR_MAX is returned
  * 
@@ -255,17 +265,6 @@ signed char str_to_signed_char(const string str)
 
     // finally done
     return str[0];
-}
-
-/**
- * @brief return same string
- * 
- * @param str string
- * @return string value
- */
-string string_str(string str)
-{
-    return str;
 }
 
 /**
@@ -708,7 +707,7 @@ long double str_to_signed_long_double(const string str)
 }
 
 #define get(T, FUNC) _Generic( (T) 0,                   \
-    char *             : string_str,                    \
+    char *             : str_to_string,                    \
     char               : str_to_signed_char,            \
     signed char        : str_to_signed_char,            \
     unsigned char      : str_to_unsigned_char,          \
@@ -746,15 +745,11 @@ int basic_write(FILE *file, size_t count, ...)
     // print iteratively
     for (int i = 0; i < count; ++i)
     {
-        char *arg = va_arg(valist, char *);
+        string arg = va_arg(valist, string);
 
         if (arg != NULL)
         {
             fputs(arg, file);
-        }
-        else
-        {
-            break;
         }
     }
 
@@ -775,6 +770,11 @@ int basic_write(FILE *file, size_t count, ...)
     sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
     __VA_ARGS__                                         \
 )
+
+/**
+ * @brief console output with stdout default 
+ */
+#define print(...) write(stdout, __VA_ARGS__)
 
 /**
  * @brief return same string pointer
@@ -1083,7 +1083,7 @@ string signed_long_double_to_str(long double val)
 
 
 /**
- * @brief str converts a value into string 
+ * @brief str converts a value into string
  * 
  * @param val value to convert
  */
@@ -1105,17 +1105,4 @@ string signed_long_double_to_str(long double val)
     long double        : signed_long_double_to_str      \
 )(val)
 
-/**
- * @brief console input with stdin default
- */
-#define input(...) read(stdin, __VA_ARGS__)
-
-/**
- * @brief console output with stdout default 
- */
-#define print(...) write(stdout, __VA_ARGS__)
-
-/**
- * @brief end of library 
- */
 #endif

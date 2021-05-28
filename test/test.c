@@ -2,7 +2,7 @@
 
 int main()
 {
-    // unnessery string_str and str in valstr but it help begineer understand better
+    // unnessery str_to_string and str in valstr but it help begineer understand better
     string valstr = get(string, input("Enter String : "));
     print("You gave : ", str(valstr), "\n");
 
