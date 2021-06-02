@@ -40,7 +40,7 @@ This is an easy input output library for c especially for begineers. This Librar
 
 ## Warning ⚠️
 
-I made this library for fun and for begineers NOT FOR PRODUCTION because this library use much space on heap that going to relesed only relesed afer main
+I made this library for fun and for begineers NOT FOR PRODUCTION because this library use much space on heap that going to relesed only afer main
 
 <!-- GETTING STARTED -->
 ## Getting Started
