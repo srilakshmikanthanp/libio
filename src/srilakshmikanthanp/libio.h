@@ -1068,6 +1068,11 @@ int raw_write(FILE *file, size_t count, ...)
         if (arg != NULL)
         {
             fputs(arg, file);
+            pcount += 1;
+        }
+        else
+        {
+            fputs("(null)", file);
         }
     }
 
