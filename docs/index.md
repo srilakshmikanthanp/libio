@@ -1,81 +1,111 @@
-# liblo Docs
-
-This is available input functions that achived using some simple trick on macros and _Generic,
+# libio Docs
 
 ~~~c
-/**
- * @brief read a line of string from file
- * 
- * @param file file to read
- * @param format format spec like printf to print
- * @param ... varargs
- * 
- * @return line of string from file
- */
-string read(FILE* file, const char* format, ...);
-
-/**
- * @brief same as read but stdin as default
- */
-string input(const char* format, ...);
-
-/**
- * @brief type type to convert
- * 
- * @param string string to convert
- * @return type converted type
- */
-type get(type, string);
+type read(type, FILE* fileptr, const char* format)
 ~~~
 
-This is available output functions that achived using some simple trick on macros and _Generic,
+This functions try to read type from fileptr if sucess then returns value of type els MAX of type or MIN of type.
+
+**Paramaters**
+
+```
+type    - type to read
+fileptr - from file
+format  - prints and ask input may be NULL
+```
+
+**Return**
+
+```
+On success the value is returned if fails the MAX or MIN of type is returned
+```
+
+---
 
 ~~~c
-/**
- * @brief writes to a File
- * 
- * @param File file to print
- * @param ... strings
- * @return number of args printed
- */
-int write(File *file, ...);
-
-/**
- * @brief same as write but stdout as defaul
- */
-int print(...);
-
-/**
- * @brief converts a type to string
- * 
- * @param val value
- * @return string of val
- */
-string str(type val);
+type input(type, const char* format)
 ~~~
 
-A simple example whould be followed like this,
+This functions try to read type from stdin if sucess then returns value of type els MAX of type or MIN of type.
+
+**Paramaters**
+
+```
+type    - type to read
+format  - prints and ask input may be NULL
+```
+
+**Return**
+
+```
+On success the value is returned if fails the MAX or MIN of type is returned
+```
+
+---
 
 ~~~c
-#include "inout.h"
-
-int main()
-{
-    // Here get and str is unnesseary because it is alderdy string but may help begineers to understand better
-    string valstr = get(string, input("Enter String : "));
-    print("You gave : ", str(valstr), "\n");
-
-    char valchr = get(char, input("Enter Char : "));
-    print("You gave : ", str(valchr), "\n");
-
-    int valint = get(int, input("Enter Int : "));
-    print("You gave : ", str(valint), "\n");
-
-    float valflt = get(float, input("Enter Float : "));
-    print("You gave : ", str(valflt), "\n");
-
-    return 0;
-}
+int write(FILE* fileptr, ...)
 ~~~
 
-_This or not same prototype that implemented this is for understanding_
+```
+This function prints the strings to file and return printed count
+```
+
+**Parameters**
+
+```
+fileptr - from file
+...     - varadic const char* 's
+```
+
+**Return**
+
+```
+number of arguments printed
+```
+
+---
+
+~~~c
+int print(...)
+~~~
+
+```
+This function prints the strings to file and return printed count
+```
+
+**Parameters**
+
+```
+...     - varadic const char* 's
+```
+
+**Return**
+
+```
+number of arguments printed
+```
+
+---
+
+~~~c
+string str(type value)
+~~~
+
+```
+This function converts value to string and returns it
+```
+
+**Parametrs**
+
+```
+value  - value to convert
+```
+
+**Return**
+
+```
+returns the string or NULL if fails
+```
+
+_This is not same prototype that implemented, this is only for understanding_

@@ -2,18 +2,10 @@
 
 int main()
 {
-    // unnessery str_to_string and str in valstr but it help begineer understand better
-    string valstr = get(string, input("Enter String : "));
-    print("You gave : ", str(valstr), "\n");
+    int a = input(int, "Enter a : ");
+    int b = input(int, "Enter a : ");
 
-    char valchr = get(char, input("Enter Char : "));
-    print("You gave : ", str(valchr), "\n");
-
-    int valint = get(int, input("Enter Int : "));
-    print("You gave : ", str(valint), "\n");
-
-    float valflt = get(float, input("Enter Float : "));
-    print("You gave : ", str(valflt), "\n");
+    print("Sum = ", str(a+b));
 
     return 0;
 }

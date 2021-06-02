@@ -124,23 +124,13 @@ void lnlistdel(void)
 }
 
 /**
- * @brief inputs line from a FILE and returns it back
- * to use as const NULL if fails.
+ * @brief inputs raw string returns in in heap
+ * must be freed manualy
  * 
- * @param file file to read
- * @return string readed string
+ * @return string 
  */
-const string read(FILE *file, const string format, ...)
+const string raw_string(FILE *file)
 {
-    // print the args
-    if (format != NULL)
-    {
-        va_list vlis;
-        va_start(vlis, format);
-        vprintf(format, vlis);
-        va_end(vlis);
-    }
-
     // capacity of buffer
     size_t capacity = 0;
 
@@ -188,10 +178,10 @@ const string read(FILE *file, const string format, ...)
         buffer[size++] = c;
     }
 
-    // size is 0 the ""
+    // size is 0 then NULL
     if (size == 0)
     {
-        return "";
+        return NULL;
     }
 
     // if size is max then there is no room for NULL
@@ -218,88 +208,179 @@ const string read(FILE *file, const string format, ...)
     // assign NULL
     buffer[size] = '\0';
 
-    // add to list
-    if (!lnlistadd(buffer))
-    {
-        free(buffer);
-        return NULL;
-    }
-
-    // finally done
+    // done
     return buffer;
 }
 
 /**
- * @brief console input with stdin default
- */
-#define input(...) read(stdin, __VA_ARGS__)
-
-/**
- * @brief return same string
+ * @brief inputs line from a FILE and returns it back
+ * to use as const NULL if fails.
  * 
- * @param str string
- * @return string value
+ * @param file file to read
+ * @return string readed string
  */
-string str_to_string(string str)
+const string get_string(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
+    // if null then try to alloc single byte
+    if(str == NULL)
+    {
+        str = calloc(1, sizeof(char));
+    }
+
+    // add to list
+    if (!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    // finally done
     return str;
 }
 
 /**
- * @brief returns signed char from string if any error then
+ * @brief returns signed char from file if any error then
  * SCHAR_MIN or SCHAR_MAX is returned
  * 
- * @param str 
+ * @param file file
+ * @param format format string 
  * @return signed char 
  */
-signed char str_to_signed_char(const string str)
+signed char get_signed_char(FILE *file, const string format, ...)
 {
-    // length
-    size_t len = strlen(str);
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
 
-    // if str is NULL or empty or > 1 then return CHAR_MAX
-    if (str == NULL || len == 0 || len > 1)
+    // get raw string
+    const string str = raw_string(file);
+
+    // if failed then return SCHAR_MAX
+    if(str == NULL)
     {
         return SCHAR_MAX;
     }
 
-    // finally done
-    return str[0];
+    // length
+    size_t len = strlen(str);
+
+    // extract char
+    signed char ch = str[0];
+
+    // unget remaining character
+    for(int i = 1; str[i] != '\0'; ++i)
+    {
+        // if fails
+        if(ungetc(ch, file) == EOF)
+        {
+            free(str);
+            return SCHAR_MAX;
+        }
+    }
+
+    // free the str
+    free(str);
+
+    // return char
+    return ch;
 }
 
 /**
  * @brief returns unsigned char from string if any error then
  * 0 or UCHAR_MAX is returned
  * 
- * @param str 
- * @return signed char 
+ * @param file file
+ * @param format format string 
+ * @return unsigned char 
  */
-unsigned char str_to_unsigned_char(const string str)
+unsigned char get_unsigned_char(FILE *file, const string format, ...)
 {
-    // length
-    size_t len = strlen(str);
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
 
-    // if str is NULL or empty or > 1 then return CHAR_MAX
-    if (str == NULL || len == 0 || len > 1)
+    // get raw string
+    const string str = raw_string(file);
+
+    // if failed then return SCHAR_MAX
+    if(str == NULL)
     {
         return UCHAR_MAX;
     }
 
-    // finally done
-    return str[0];
+    // length
+    size_t len = strlen(str);
+
+    // extract char
+    unsigned char ch = str[0];
+
+    // unget remaining character
+    for(int i = 1; str[i] != '\0'; ++i)
+    {
+        // if fails
+        if(ungetc(ch, file) == EOF)
+        {
+            free(str);
+            return UCHAR_MAX;
+        }
+    }
+
+    // free the str
+    free(str);
+
+    // return char
+    return ch;
 }
 
 /**
- * @brief String to sort int if any erro occurs
+ * @brief get sort int if any erro occurs
  * then returns SHRT_MAX or SHRT_MIN
  * 
- * @param str string
- * @return short value
+ * @param file file
+ * @param format format string 
+ * @return sort int 
  */
-signed short str_to_signed_short(const string str)
+signed short get_signed_short(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
+
+    // end ptr for track
+    char *end = NULL;
 
     // if str is NULL or empty then return SHRT_MAX
     if (str == NULL || len == 0)
@@ -307,11 +388,8 @@ signed short str_to_signed_short(const string str)
         return SHRT_MAX;
     }
 
-    // end ptr for track
-    char *endptr = NULL;
-
     // actual value in long
-    long value = strtol(str, &endptr, 0);
+    long value = strtol(str, &end, 0);
 
     // if value too low for short
     if (value < SHRT_MIN)
@@ -325,27 +403,51 @@ signed short str_to_signed_short(const string str)
         return SHRT_MAX;
     }
 
-    // if this string is not perfect short
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return SHRT_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return SHRT_MAX;
+        } 
     }
+
+    // free str
+    free(str);
 
     // finally done
     return value;
 }
 
 /**
- * @brief returns unsigned short of string if any
+ * @brief returns unsigned short from file if any
  * error occurs then 0 or USHRT_MAX is returned
  * 
- * @param str string value
- * @return unsigned short value
+ * @param file file
+ * @param format format string 
+ * @return unsigned sort int 
  */
-unsigned short str_to_unsigned_short(const string str)
+unsigned short get_unsigned_short(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
+
+    // end ptr for track
+    char *end = NULL;
 
     // if str is NULL or empty then return SHRT_MAX
     if (str == NULL || len == 0)
@@ -353,11 +455,8 @@ unsigned short str_to_unsigned_short(const string str)
         return USHRT_MAX;
     }
 
-    // end ptr for track
-    char *endptr = NULL;
-
     // actual value in long
-    unsigned long value = strtoul(str, &endptr, 0);
+    unsigned long value = strtoul(str, &end, 0);
 
     // if value too big for short
     if (value > USHRT_MAX)
@@ -365,10 +464,15 @@ unsigned short str_to_unsigned_short(const string str)
         return USHRT_MAX;
     }
 
-    // if this string is not perfect short
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return USHRT_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return USHRT_MAX;
+        } 
     }
 
     // finally done
@@ -376,16 +480,32 @@ unsigned short str_to_unsigned_short(const string str)
 }
 
 /**
- * @brief string to signed integer if any error
+ * @brief read signed integer if any error
  * then INT_MIN or INT_MAX is returned 
  * 
- * @param str string value
- * @return signed int value
+ * @param file file
+ * @param format format string 
+ * @return signed int
  */
-signed int str_to_signed_int(const string str)
+signed int get_signed_int(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
+
+    // end ptr for track
+    char *end = NULL;
 
     // if str is NULL or empty then return INT_MAX
     if (str == NULL || len == 0)
@@ -393,11 +513,8 @@ signed int str_to_signed_int(const string str)
         return INT_MAX;
     }
 
-    // end ptr for track
-    char *endptr = NULL;
-
     // actual value in long
-    long value = strtol(str, &endptr, 0);
+    long value = strtol(str, &end, 0);
 
     // if value too low for int
     if (value < INT_MIN)
@@ -411,27 +528,51 @@ signed int str_to_signed_int(const string str)
         return INT_MAX;
     }
 
-    // if this string is not perfect int
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return INT_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return INT_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
 }
 
 /**
- * @brief returns unsigned int of string if any
+ * @brief returns unsigned int of from file if any
  * error occurs then 0 or UINT_MAX is returned
  * 
- * @param str string value
- * @return unsigned int value
+ * @param file file
+ * @param format format string 
+ * @return unsigned int
  */
-unsigned int str_to_unsigned_int(const string str)
+unsigned int get_unsigned_int(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // read string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
+
+    // end ptr for track
+    char *end = NULL;
 
     // if str is NULL or empty then return UINT_MAX
     if (str == NULL || len == 0)
@@ -439,11 +580,8 @@ unsigned int str_to_unsigned_int(const string str)
         return UINT_MAX;
     }
 
-    // end ptr for track
-    char *endptr = NULL;
-
     // actual value in long
-    unsigned long value = strtoul(str, &endptr, 0);
+    unsigned long value = strtoul(str, &end, 0);
 
     // if value too big for unsigned int
     if (value > UINT_MAX)
@@ -451,25 +589,46 @@ unsigned int str_to_unsigned_int(const string str)
         return UINT_MAX;
     }
 
-    // if this string is not perfect unsigned int
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return UINT_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return UINT_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
 }
 
 /**
- * @brief string to signed long if any error
+ * @brief read signed long if any error
  * then LONG_MIN or LONG_MAX is returned 
  * 
- * @param str string value
- * @return signed long value
+ * @param file file
+ * @param format format string 
+ * @return signed long
  */
-signed long str_to_signed_long(const string str)
+signed long get_signed_long(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -480,16 +639,24 @@ signed long str_to_signed_long(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    long value = strtol(str, &endptr, 0);
+    long value = strtol(str, &end, 0);
 
-    // if this string is not perfect int
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return LONG_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return LONG_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -499,11 +666,24 @@ signed long str_to_signed_long(const string str)
  * @brief returns unsigned long of string if any
  * error occurs then 0 or ULONG_MAX is returned
  * 
- * @param str string value
- * @return unsigned long value
+ * @param file file
+ * @param format format string 
+ * @return unsigned long
  */
-unsigned long str_to_unsigned_long(const string str)
+unsigned long get_unsigned_long(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -514,16 +694,24 @@ unsigned long str_to_unsigned_long(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    unsigned long value = strtoul(str, &endptr, 0);
+    unsigned long value = strtoul(str, &end, 0);
 
-    // if this string is not perfect unsigned int
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return ULONG_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return ULONG_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -533,11 +721,24 @@ unsigned long str_to_unsigned_long(const string str)
  * @brief string to signed longlong if any error
  * then LLONG_MIN or LLONG_MAX is returned 
  * 
- * @param str string value
- * @return signed long long value
+ * @param file file
+ * @param format format string 
+ * @return signed long long
  */
-signed long long str_to_signed_long_long(const string str)
+signed long long get_signed_long_long(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -548,16 +749,24 @@ signed long long str_to_signed_long_long(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    long long value = strtoll(str, &endptr, 0);
+    long long value = strtoll(str, &end, 0);
 
-    // if this string is not perfect int
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return LLONG_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return LLONG_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -567,11 +776,24 @@ signed long long str_to_signed_long_long(const string str)
  * @brief returns unsigned long long of string if any
  * error occurs then 0 or ULONG_MAX is returned
  * 
- * @param str string value
- * @return unsigned long long value
+ * @param file file
+ * @param format format string 
+ * @return unsigned long long
  */
-unsigned long long str_to_unsigned_long_long(const string str)
+unsigned long long get_unsigned_long_long(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -582,16 +804,25 @@ unsigned long long str_to_unsigned_long_long(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    unsigned long long value = strtoull(str, &endptr, 0);
+    unsigned long long value = strtoull(str, &end, 0);
 
-    // if this string is not perfect unsigned int
-    if (*endptr != '\0')
+
+    // unget
+    while(*end != '\0')
     {
-        return ULLONG_MAX;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return ULLONG_MAX;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -603,11 +834,24 @@ unsigned long long str_to_unsigned_long_long(const string str)
  * return type, range error occurs and HUGE_VALF is returned. 
  * If no conversion can be performed, ​0​ is returned.
  * 
- * @param str string value
- * @return float value
+ * @param file file
+ * @param format format string 
+ * @return float 
  */
-float str_to_signed_float(const string str)
+float get_float(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -618,16 +862,24 @@ float str_to_signed_float(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    float value = strtof(str, &endptr);
+    float value = strtof(str, &end);
 
-    // if this string is not perfect float
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return HUGE_VALF;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return HUGE_VALF;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -640,11 +892,24 @@ float str_to_signed_float(const string str)
  * is returned. If no conversion can be performed, ​
  * 0​ is returned.
  * 
- * @param str string value
- * @return double value
+ * @param file file
+ * @param format format string 
+ * @return double
  */
-double str_to_signed_double(const string str)
+double get_double(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -655,16 +920,24 @@ double str_to_signed_double(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in double
-    double value = strtod(str, &endptr);
+    double value = strtod(str, &end);
 
-    // if this string is not perfect double
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return HUGE_VAL;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return HUGE_VAL;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
@@ -676,11 +949,24 @@ double str_to_signed_double(const string str)
  * return type, range error occurs and HUGE_VALL is returned.
  * If no conversion can be performed, ​0​ is returned.
  * 
- * @param str string value
- * @return long double value
+ * @param file file
+ * @param format format string 
+ * @return long double 
  */
-long double str_to_signed_long_double(const string str)
+long double get_long_double(FILE *file, const string format, ...)
 {
+    // print the args
+    if (format != NULL)
+    {
+        va_list vlis;
+        va_start(vlis, format);
+        vprintf(format, vlis);
+        va_end(vlis);
+    }
+
+    // get string
+    string str = raw_string(file);
+
     // length
     size_t len = strlen(str);
 
@@ -691,38 +977,70 @@ long double str_to_signed_long_double(const string str)
     }
 
     // end ptr for track
-    char *endptr = NULL;
+    char *end = NULL;
 
     // actual value in long
-    long double value = strtof(str, &endptr);
+    long double value = strtof(str, &end);
 
-    // if this string is not perfect long double
-    if (*endptr != '\0')
+    // unget
+    while(*end != '\0')
     {
-        return HUGE_VAL;
+        // if fails
+        if(ungetc(*end, file) == EOF)
+        {
+            free(str);
+            return HUGE_VAL;
+        } 
     }
+
+    // free string
+    free(str);
 
     // finally done
     return value;
 }
 
-#define get(T, FUNC) _Generic( (T) 0,                   \
-    char *             : str_to_string,                    \
-    char               : str_to_signed_char,            \
-    signed char        : str_to_signed_char,            \
-    unsigned char      : str_to_unsigned_char,          \
-    signed short       : str_to_signed_short,           \
-    unsigned short     : str_to_unsigned_short,         \
-    signed int         : str_to_signed_int,             \
-    unsigned int       : str_to_unsigned_int,           \
-    signed long        : str_to_signed_long,            \
-    unsigned long      : str_to_unsigned_long,          \
-    signed long long   : str_to_signed_long_long,       \
-    unsigned long long : str_to_unsigned_long_long,     \
-    float              : str_to_signed_float,           \
-    double             : str_to_signed_double,          \
-    long double        : str_to_signed_long_double      \
-)(FUNC)
+/**
+ * @brief read from file
+ */
+#define read(T, file, ...) _Generic( (T) 0,                     \
+    string             : get_string,                            \
+    char               : get_signed_char,                       \
+    signed char        : get_signed_char,                       \
+    unsigned char      : get_unsigned_char,                     \
+    signed short       : get_signed_short,                      \
+    unsigned short     : get_unsigned_short,                    \
+    signed int         : get_signed_int,                        \
+    unsigned int       : get_unsigned_int,                      \
+    signed long        : get_signed_long,                       \
+    unsigned long      : get_unsigned_long,                     \
+    signed long long   : get_signed_long_long,                  \
+    unsigned long long : get_unsigned_long_long,                \
+    float              : get_float,                             \
+    double             : get_double,                            \
+    long double        : get_long_double                        \
+)(file, format, __VA_ARGS__)
+
+/**
+ * @brief read from console 
+ */
+#define input(T, ...) _Generic( (T) 0,                          \
+    string             : get_string,                            \
+    char               : get_signed_char,                       \
+    signed char        : get_signed_char,                       \
+    unsigned char      : get_unsigned_char,                     \
+    signed short       : get_signed_short,                      \
+    unsigned short     : get_unsigned_short,                    \
+    signed int         : get_signed_int,                        \
+    unsigned int       : get_unsigned_int,                      \
+    signed long        : get_signed_long,                       \
+    unsigned long      : get_unsigned_long,                     \
+    signed long long   : get_signed_long_long,                  \
+    unsigned long long : get_unsigned_long_long,                \
+    float              : get_float,                             \
+    double             : get_double,                            \
+    long double        : get_long_double                        \
+)(stdin, __VA_ARGS__)
 
 /**
  * @brief [internal] print the out to file
@@ -731,7 +1049,7 @@ long double str_to_signed_long_double(const string str)
  * @param ... char*
  * @return number of args printed
  */
-int basic_write(FILE *file, size_t count, ...)
+int raw_write(FILE *file, size_t count, ...)
 {
     // printed count
     size_t pcount = 0;
@@ -759,22 +1077,6 @@ int basic_write(FILE *file, size_t count, ...)
     // return
     return pcount;
 }
-
-/**
- * @brief prints to a File
- * 
- * @param File file to print
- * @param ... char*
- */
-#define write(File, ...) basic_write(File,              \
-    sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
-    __VA_ARGS__                                         \
-)
-
-/**
- * @brief console output with stdout default 
- */
-#define print(...) write(stdout, __VA_ARGS__)
 
 /**
  * @brief return same string pointer
@@ -1104,5 +1406,21 @@ string signed_long_double_to_str(long double val)
     double             : signed_double_to_str,          \
     long double        : signed_long_double_to_str      \
 )(val)
+
+/**
+ * @brief prints to a File
+ * 
+ * @param File file to print
+ * @param ... char*
+ */
+#define write(File, ...) raw_write(File,                \
+    sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
+    __VA_ARGS__                                         \
+)
+
+/**
+ * @brief prints to console
+ */
+#define print(...) write(stdout, __VA_ARGS__)
 
 #endif
