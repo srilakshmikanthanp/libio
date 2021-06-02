@@ -22,8 +22,8 @@
  * SOFTWARE.
  */
 
-#ifndef INOUT_HEADER
-#define INOUT_HEADER
+#ifndef LIBIO_HEADER
+#define LIBIO_HEADER
 
 #include <stdio.h>
 #include <math.h>
