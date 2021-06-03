@@ -141,7 +141,7 @@ const string raw_string(FILE *file)
     string buffer = NULL;
 
     // current character
-    char c = 0;
+    int c = 0;
 
     // read and apped character
     while ((c = fgetc(file)) != '\n' && c != '\r' && c != EOF)
