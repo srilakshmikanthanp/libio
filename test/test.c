@@ -5,7 +5,7 @@ int main()
     int a = input(int, "Enter a : ");
     int b = input(int, "Enter a : ");
 
-    print("Sum = ", str(a+b));
+    print("Sum = ", str(a+b), "\n");
 
     return 0;
 }

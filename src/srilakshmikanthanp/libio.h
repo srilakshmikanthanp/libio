@@ -1388,28 +1388,60 @@ string signed_long_double_to_str(long double val)
     return str;
 }
 
+/**
+ * @brief converts pointer to string
+ * 
+ * @param ptr 
+ * @return string 
+ */
+string pointer_to_str(void *ptr)
+{
+    size_t len = snprintf(NULL, 0, "%p", ptr);
+    string str = calloc(++len, sizeof(char));
+
+    if(!lnlistadd(str))
+    {
+        free(str);
+        return NULL;
+    }
+
+    snprintf(str, len, "%p", ptr);
+
+    return str;
+}
 
 /**
  * @brief str converts a value into string
  * 
  * @param val value to convert
  */
-#define str(val) _Generic((val),                        \
-    char*              : string_to_str,                 \
-    char               : signed_char_to_str,            \
-    signed char        : signed_char_to_str,            \
-    unsigned char      : unsigned_char_to_str,          \
-    signed short       : signed_short_to_str,           \
-    unsigned short     : unsigned_short_to_str,         \
-    signed int         : signed_int_to_str,             \
-    unsigned int       : unsigned_int_to_str,           \
-    signed long        : signed_long_to_str,            \
-    unsigned long      : unsigned_long_to_str,          \
-    signed long long   : signed_long_long_to_str,       \
-    unsigned long long : unsigned_long_long_to_str,     \
-    float              : signed_float_to_str,           \
-    double             : signed_double_to_str,          \
-    long double        : signed_long_double_to_str      \
+#define str(val) _Generic((val),                         \
+    string              : string_to_str,                 \
+    char                : signed_char_to_str,            \
+    signed char         : signed_char_to_str,            \
+    unsigned char       : unsigned_char_to_str,          \
+    signed short        : signed_short_to_str,           \
+    unsigned short      : unsigned_short_to_str,         \
+    signed int          : signed_int_to_str,             \
+    unsigned int        : unsigned_int_to_str,           \
+    signed long         : signed_long_to_str,            \
+    unsigned long       : unsigned_long_to_str,          \
+    signed long long    : signed_long_long_to_str,       \
+    unsigned long long  : unsigned_long_long_to_str,     \
+    float               : signed_float_to_str,           \
+    double              : signed_double_to_str,          \
+    long double         : signed_long_double_to_str,     \
+    signed short*       : pointer_to_str,                \
+    unsigned short*     : pointer_to_str,                \
+    signed int*         : pointer_to_str,                \
+    unsigned int*       : pointer_to_str,                \
+    signed long*        : pointer_to_str,                \
+    unsigned long*      : pointer_to_str,                \
+    signed long long*   : pointer_to_str,                \
+    unsigned long long* : pointer_to_str,                \
+    float*              : pointer_to_str,                \
+    double*             : pointer_to_str,                \
+    long double*        : pointer_to_str                 \
 )(val)
 
 /**
