@@ -1445,19 +1445,93 @@ string pointer_to_str(void *ptr)
 )(val)
 
 /**
+ * @brief extractors
+ */
+#define _1(val, ...)    str(val)     __VA_ARGS__
+#define _2(val, ...)    str(val), _1(__VA_ARGS__)
+#define _3(val, ...)    str(val), _2(__VA_ARGS__)
+#define _4(val, ...)    str(val), _3(__VA_ARGS__)
+#define _5(val, ...)    str(val), _4(__VA_ARGS__)
+#define _6(val, ...)    str(val), _5(__VA_ARGS__)
+#define _7(val, ...)    str(val), _6(__VA_ARGS__)
+#define _8(val, ...)    str(val), _7(__VA_ARGS__)
+#define _9(val, ...)    str(val), _8(__VA_ARGS__)
+#define _10(val, ...)   str(val), _9(__VA_ARGS__)
+#define _11(val, ...)   str(val), _10(__VA_ARGS__)
+#define _12(val, ...)   str(val), _11(__VA_ARGS__)
+#define _13(val, ...)   str(val), _12(__VA_ARGS__)
+#define _14(val, ...)   str(val), _13(__VA_ARGS__)
+#define _15(val, ...)   str(val), _14(__VA_ARGS__)
+#define _16(val, ...)   str(val), _15(__VA_ARGS__)
+#define _17(val, ...)   str(val), _16(__VA_ARGS__)
+#define _18(val, ...)   str(val), _17(__VA_ARGS__)
+#define _19(val, ...)   str(val), _18(__VA_ARGS__)
+#define _20(val, ...)   str(val), _19(__VA_ARGS__)
+#define _21(val, ...)   str(val), _20(__VA_ARGS__)
+#define _22(val, ...)   str(val), _21(__VA_ARGS__)
+#define _23(val, ...)   str(val), _22(__VA_ARGS__)
+#define _24(val, ...)   str(val), _23(__VA_ARGS__)
+#define _25(val, ...)   str(val), _24(__VA_ARGS__)
+#define _26(val, ...)   str(val), _25(__VA_ARGS__)
+#define _27(val, ...)   str(val), _26(__VA_ARGS__)
+#define _28(val, ...)   str(val), _27(__VA_ARGS__)
+#define _29(val, ...)   str(val), _28(__VA_ARGS__)
+#define _30(val, ...)   str(val), _29(__VA_ARGS__)
+#define _31(val, ...)   str(val), _20(__VA_ARGS__)
+#define _32(val, ...)   str(val), _21(__VA_ARGS__)
+
+/**
  * @brief prints to a File
  * 
  * @param File file to print
  * @param ... char*
  */
-#define write(File, ...) raw_write(File,                \
-    sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
-    __VA_ARGS__                                         \
+#define write(File, ...) raw_write(File,                     \
+    sizeof((char *[]){_12(__VA_ARGS__)}) / sizeof(char *),   \
+    _22(__VA_ARGS__)                                         \
 )
 
 /**
  * @brief prints to console
  */
-#define print(...) write(stdout, __VA_ARGS__)
+#define print(...) write(stdout, _22(__VA_ARGS__))
+
+/**
+ * @brief undef macros 
+ */
+#undef _32
+#undef _31
+#undef _30
+#undef _29
+#undef _28
+#undef _27
+#undef _26
+#undef _25
+#undef _24
+#undef _23
+#undef _22
+#undef _21
+#undef _20
+#undef _19
+#undef _18
+#undef _17
+#undef _16
+#undef _15
+#undef _14
+#undef _13
+#undef _12
+#undef _11
+#undef _12
+#undef _11
+#undef _10
+#undef _9
+#undef _8
+#undef _7
+#undef _6
+#undef _5
+#undef _4
+#undef _3
+#undef _2
+#undef _1
 
 #endif
