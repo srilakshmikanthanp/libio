@@ -29,6 +29,7 @@
 #include <math.h>
 #include <stdarg.h>
 #include <string.h>
+#include <ctype.h>
 #include <stdint.h>
 #include <float.h>
 #include <limits.h>
@@ -143,8 +144,21 @@ const string raw_string(FILE *file)
     // current character
     int c = 0;
 
+    // skip white space
+    while (1)
+    {
+        if (isspace((c = fgetc(file))))
+        {
+            continue;
+        }
+        else
+        {
+            break;
+        }
+    }
+
     // read and apped character
-    while ((c = fgetc(file)) != '\n' && c != '\r' && c != EOF)
+    while (c != '\n' && c != '\r' && c != EOF && c != 10)
     {
         // is enough room
         if (size + 1 > capacity)
@@ -176,6 +190,37 @@ const string raw_string(FILE *file)
 
         // append char
         buffer[size++] = c;
+
+        // get character
+        c = fgetc(file);
+    }
+
+    // add new line to buffer
+    if (c == '\n' && c == '\r' || c == 10)
+    {
+        // if size is max then there is no room for NULL
+        if (size == SIZE_MAX)
+        {
+            free(buffer);
+            return NULL;
+        }
+
+        //shrink buffer
+        string temp = (string)realloc(buffer, ++size);
+
+        // if fails then return NULL
+        if (temp == NULL)
+        {
+            free(buffer);
+            return NULL;
+        }
+        else
+        {
+            buffer = temp;
+        }
+
+        // assign \n
+        buffer[size - 1] = c;
     }
 
     // size is 0 then NULL
@@ -192,7 +237,7 @@ const string raw_string(FILE *file)
     }
 
     //shrink buffer
-    string temp = (string)realloc(buffer, size + 1);
+    string temp = (string)realloc(buffer, ++size);
 
     // if fails then return NULL
     if (temp == NULL)
@@ -206,7 +251,7 @@ const string raw_string(FILE *file)
     }
 
     // assign NULL
-    buffer[size] = '\0';
+    buffer[size - 1] = '\0';
 
     // done
     return buffer;
@@ -234,7 +279,7 @@ const string get_string(FILE *file, const string format, ...)
     string str = raw_string(file);
 
     // if null then try to alloc single byte
-    if(str == NULL)
+    if (str == NULL)
     {
         str = calloc(1, sizeof(char));
     }
@@ -269,37 +314,8 @@ signed char get_signed_char(FILE *file, const string format, ...)
         va_end(vlis);
     }
 
-    // get raw string
-    const string str = raw_string(file);
-
-    // if failed then return SCHAR_MAX
-    if(str == NULL)
-    {
-        return SCHAR_MAX;
-    }
-
-    // length
-    size_t len = strlen(str);
-
-    // extract char
-    signed char ch = str[0];
-
-    // unget remaining character
-    for(int i = 1; str[i] != '\0'; ++i)
-    {
-        // if fails
-        if(ungetc(ch, file) == EOF)
-        {
-            free(str);
-            return SCHAR_MAX;
-        }
-    }
-
-    // free the str
-    free(str);
-
     // return char
-    return ch;
+    return getc(file);
 }
 
 /**
@@ -321,37 +337,8 @@ unsigned char get_unsigned_char(FILE *file, const string format, ...)
         va_end(vlis);
     }
 
-    // get raw string
-    const string str = raw_string(file);
-
-    // if failed then return SCHAR_MAX
-    if(str == NULL)
-    {
-        return UCHAR_MAX;
-    }
-
-    // length
-    size_t len = strlen(str);
-
-    // extract char
-    unsigned char ch = str[0];
-
-    // unget remaining character
-    for(int i = 1; str[i] != '\0'; ++i)
-    {
-        // if fails
-        if(ungetc(ch, file) == EOF)
-        {
-            free(str);
-            return UCHAR_MAX;
-        }
-    }
-
-    // free the str
-    free(str);
-
     // return char
-    return ch;
+    return getc(file);
 }
 
 /**
@@ -403,15 +390,20 @@ signed short get_signed_short(FILE *file, const string format, ...)
         return SHRT_MAX;
     }
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return SHRT_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free str
@@ -464,15 +456,20 @@ unsigned short get_unsigned_short(FILE *file, const string format, ...)
         return USHRT_MAX;
     }
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return USHRT_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // finally done
@@ -528,15 +525,20 @@ signed int get_signed_int(FILE *file, const string format, ...)
         return INT_MAX;
     }
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
-            return INT_MAX;
-        } 
+            return USHRT_MAX;
+        }
+
+        ++end;
     }
 
     // free string
@@ -589,15 +591,20 @@ unsigned int get_unsigned_int(FILE *file, const string format, ...)
         return UINT_MAX;
     }
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return UINT_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -644,15 +651,20 @@ signed long get_signed_long(FILE *file, const string format, ...)
     // actual value in long
     long value = strtol(str, &end, 0);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return LONG_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -699,15 +711,20 @@ unsigned long get_unsigned_long(FILE *file, const string format, ...)
     // actual value in long
     unsigned long value = strtoul(str, &end, 0);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return ULONG_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -754,15 +771,20 @@ signed long long get_signed_long_long(FILE *file, const string format, ...)
     // actual value in long
     long long value = strtoll(str, &end, 0);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return LLONG_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -809,16 +831,20 @@ unsigned long long get_unsigned_long_long(FILE *file, const string format, ...)
     // actual value in long
     unsigned long long value = strtoull(str, &end, 0);
 
+    // reverse string
+    strrev(end);
 
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return ULLONG_MAX;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -867,15 +893,20 @@ float get_float(FILE *file, const string format, ...)
     // actual value in long
     float value = strtof(str, &end);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return HUGE_VALF;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -925,15 +956,20 @@ double get_double(FILE *file, const string format, ...)
     // actual value in double
     double value = strtod(str, &end);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return HUGE_VAL;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -982,15 +1018,20 @@ long double get_long_double(FILE *file, const string format, ...)
     // actual value in long
     long double value = strtof(str, &end);
 
+    // reverse string
+    strrev(end);
+
     // unget
-    while(*end != '\0')
+    while (*end != '\0')
     {
         // if fails
-        if(ungetc(*end, file) == EOF)
+        if (ungetc(*end, file) == EOF)
         {
             free(str);
             return HUGE_VAL;
-        } 
+        }
+
+        ++end;
     }
 
     // free string
@@ -1109,14 +1150,14 @@ string signed_char_to_str(signed char ch)
         return NULL;
     }
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
     }
 
     str[0] = ch;
-    
+
     return str;
 }
 
@@ -1135,14 +1176,14 @@ string unsigned_char_to_str(unsigned char ch)
         return NULL;
     }
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
     }
 
     str[0] = ch;
-    
+
     return str;
 }
 
@@ -1157,7 +1198,7 @@ string signed_short_to_str(signed short val)
     size_t len = snprintf(NULL, 0, "%hd", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1179,7 +1220,7 @@ string unsigned_short_to_str(unsigned short val)
     size_t len = snprintf(NULL, 0, "%hu", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1201,7 +1242,7 @@ string signed_int_to_str(signed int val)
     size_t len = snprintf(NULL, 0, "%d", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1223,7 +1264,7 @@ string unsigned_int_to_str(unsigned int val)
     size_t len = snprintf(NULL, 0, "%u", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1243,9 +1284,9 @@ string unsigned_int_to_str(unsigned int val)
 string signed_long_to_str(signed long val)
 {
     size_t len = snprintf(NULL, 0, "%ld", val);
-    string str = calloc(len +1, sizeof(char));
+    string str = calloc(len + 1, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1267,7 +1308,7 @@ string unsigned_long_to_str(unsigned long val)
     size_t len = snprintf(NULL, 0, "%lu", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1289,7 +1330,7 @@ string signed_long_long_to_str(signed long long val)
     size_t len = snprintf(NULL, 0, "%lld", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1311,7 +1352,7 @@ string unsigned_long_long_to_str(unsigned long long val)
     size_t len = snprintf(NULL, 0, "%llu", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1333,7 +1374,7 @@ string signed_float_to_str(float val)
     size_t len = snprintf(NULL, 0, "%f", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1355,7 +1396,7 @@ string signed_double_to_str(double val)
     size_t len = snprintf(NULL, 0, "%lf", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1377,7 +1418,7 @@ string signed_long_double_to_str(long double val)
     size_t len = snprintf(NULL, 0, "%Lf", val);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1399,7 +1440,7 @@ string pointer_to_str(void *ptr)
     size_t len = snprintf(NULL, 0, "%p", ptr);
     string str = calloc(++len, sizeof(char));
 
-    if(!lnlistadd(str))
+    if (!lnlistadd(str))
     {
         free(str);
         return NULL;
@@ -1452,12 +1493,33 @@ string pointer_to_str(void *ptr)
  */
 #define write(File, ...) raw_write(File,                \
     sizeof((char *[]){__VA_ARGS__}) / sizeof(char *),   \
-    __VA_ARGS__                                         \
-)
+        __VA_ARGS__)
 
 /**
  * @brief prints to console
  */
 #define print(...) write(stdout, __VA_ARGS__)
+
+
+/** Utilities **/
+
+
+/**
+ * @brief flush the output stream
+ */
+void flush(FILE* file)
+{
+    fflush(file);
+}
+
+/**
+ * @brief ignore all characters in input stream
+ * 
+ * @param file 
+ */
+void ignore(FILE* file)
+{
+    while(fgetc(file) != EOF);
+}
 
 #endif

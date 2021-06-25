@@ -2,10 +2,10 @@
 
 int main()
 {
-    int a = input(int, "Enter a : ");
-    int b = input(int, "Enter a : ");
+    int a = input(int , "Enter 1 : ");
+    int b = input(int , "Enter 2 : ");
 
-    print("Sum = ", str(a+b));
+    print("values : ", str(a), " ", str(b));
 
     return 0;
 }
