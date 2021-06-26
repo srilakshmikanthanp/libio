@@ -248,7 +248,28 @@ string raw_string(FILE *file)
     return buffer;
 }
 
+/**
+ * @brief reverse the string
+ * 
+ * @param str string to reverse
+ */
+void revstr(string val)
+{
+    if (!val || ! *val)
+        return;
 
+    int i = strlen(val) - 1, j = 0;
+
+    char ch;
+    while (i > j)
+    {
+        ch = val[i];
+        val[i] = val[j];
+        val[j] = ch;
+        i--;
+        j++;
+    }
+}
 
 // This is input section
 // contains input functions
@@ -388,7 +409,7 @@ signed short get_signed_short(FILE *file, const string format, ...)
     }
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -454,7 +475,7 @@ unsigned short get_unsigned_short(FILE *file, const string format, ...)
     }
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -523,7 +544,7 @@ signed int get_signed_int(FILE *file, const string format, ...)
     }
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -589,7 +610,7 @@ unsigned int get_unsigned_int(FILE *file, const string format, ...)
     }
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -649,7 +670,7 @@ signed long get_signed_long(FILE *file, const string format, ...)
     long value = strtol(str, &end, 0);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -709,7 +730,7 @@ unsigned long get_unsigned_long(FILE *file, const string format, ...)
     unsigned long value = strtoul(str, &end, 0);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -769,7 +790,7 @@ signed long long get_signed_long_long(FILE *file, const string format, ...)
     long long value = strtoll(str, &end, 0);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -829,7 +850,7 @@ unsigned long long get_unsigned_long_long(FILE *file, const string format, ...)
     unsigned long long value = strtoull(str, &end, 0);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -891,7 +912,7 @@ float get_float(FILE *file, const string format, ...)
     float value = strtof(str, &end);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -954,7 +975,7 @@ double get_double(FILE *file, const string format, ...)
     double value = strtod(str, &end);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
@@ -1016,7 +1037,7 @@ long double get_long_double(FILE *file, const string format, ...)
     long double value = strtof(str, &end);
 
     // reverse string
-    strrev(end);
+    revstr(end);
 
     // unget
     while (*end != '\0')
