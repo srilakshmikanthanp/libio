@@ -35,6 +35,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 /**
  * @mainpage libio
@@ -130,7 +131,7 @@ void lnlistdel(void)
  * 
  * @return string 
  */
-const string raw_string(FILE *file)
+string raw_string(FILE *file)
 {
     // capacity of buffer
     size_t capacity = 0;
@@ -145,17 +146,7 @@ const string raw_string(FILE *file)
     int c = 0;
 
     // skip white space
-    while (1)
-    {
-        if (isspace((c = fgetc(file))))
-        {
-            continue;
-        }
-        else
-        {
-            break;
-        }
-    }
+    while (isspace((c = fgetc(file))));
 
     // read and apped character
     while (c != '\n' && c != '\r' && c != EOF && c != 10)
@@ -196,7 +187,7 @@ const string raw_string(FILE *file)
     }
 
     // add new line to buffer
-    if (c == '\n' && c == '\r' || c == 10)
+    if (c == '\n'|| c == '\r' || c == 10)
     {
         // if size is max then there is no room for NULL
         if (size == SIZE_MAX)
@@ -257,6 +248,12 @@ const string raw_string(FILE *file)
     return buffer;
 }
 
+
+
+// This is input section
+// contains input functions
+// and macros
+
 /**
  * @brief inputs line from a FILE and returns it back
  * to use as const NULL if fails.
@@ -264,7 +261,7 @@ const string raw_string(FILE *file)
  * @param file file to read
  * @return string readed string
  */
-const string get_string(FILE *file, const string format, ...)
+string get_string(FILE *file, const string format, ...)
 {
     // print the args
     if (format != NULL)
@@ -1060,28 +1057,19 @@ long double get_long_double(FILE *file, const string format, ...)
     float              : get_float,                             \
     double             : get_double,                            \
     long double        : get_long_double                        \
-)(file, format, __VA_ARGS__)
+)(file, __VA_ARGS__)
 
 /**
  * @brief read from console 
  */
-#define input(T, ...) _Generic( (T) 0,                          \
-    string             : get_string,                            \
-    char               : get_signed_char,                       \
-    signed char        : get_signed_char,                       \
-    unsigned char      : get_unsigned_char,                     \
-    signed short       : get_signed_short,                      \
-    unsigned short     : get_unsigned_short,                    \
-    signed int         : get_signed_int,                        \
-    unsigned int       : get_unsigned_int,                      \
-    signed long        : get_signed_long,                       \
-    unsigned long      : get_unsigned_long,                     \
-    signed long long   : get_signed_long_long,                  \
-    unsigned long long : get_unsigned_long_long,                \
-    float              : get_float,                             \
-    double             : get_double,                            \
-    long double        : get_long_double                        \
-)(stdin, __VA_ARGS__)
+#define input(T, ...) read(T, stdin, __VA_ARGS__)
+
+
+
+// This section is for output
+// contains ouput functions
+// and macros
+
 
 /**
  * @brief [internal] print the out to file
@@ -1102,7 +1090,7 @@ int raw_write(FILE *file, size_t count, ...)
     va_start(valist, count);
 
     // print iteratively
-    for (int i = 0; i < count; ++i)
+    for (size_t i = 0; i < count; ++i)
     {
         string arg = va_arg(valist, string);
 
@@ -1327,7 +1315,7 @@ string unsigned_long_to_str(unsigned long val)
  */
 string signed_long_long_to_str(signed long long val)
 {
-    size_t len = snprintf(NULL, 0, "%lld", val);
+    size_t len = snprintf(NULL, 0, "%"PRId64"" , val);
     string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
@@ -1336,7 +1324,7 @@ string signed_long_long_to_str(signed long long val)
         return NULL;
     }
 
-    snprintf(str, len, "%lld", val);
+    snprintf(str, len, "%"PRId64"", val);
 
     return str;
 }
@@ -1349,7 +1337,7 @@ string signed_long_long_to_str(signed long long val)
  */
 string unsigned_long_long_to_str(unsigned long long val)
 {
-    size_t len = snprintf(NULL, 0, "%llu", val);
+    size_t len = snprintf(NULL, 0, "%"PRId64"", val);
     string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
@@ -1358,7 +1346,7 @@ string unsigned_long_long_to_str(unsigned long long val)
         return NULL;
     }
 
-    snprintf(str, len, "%llu", val);
+    snprintf(str, len, "%"PRId64"", val);
 
     return str;
 }
@@ -1415,7 +1403,17 @@ string signed_double_to_str(double val)
  */
 string signed_long_double_to_str(long double val)
 {
-    size_t len = snprintf(NULL, 0, "%Lf", val);
+    #if defined (__GNUC__) || defined (__clang__)
+        #ifdef _WIN32
+            #define snprintF __mingw_snprintf
+        #else
+            #define snprintF snprintf
+        #endif
+    #else
+        #define snprintF snprintf
+    #endif
+
+    size_t len = snprintF(NULL, 0, "%Lf", val);
     string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
@@ -1424,9 +1422,11 @@ string signed_long_double_to_str(long double val)
         return NULL;
     }
 
-    snprintf(str, len, "%Lf", val);
+    snprintF(str, len, "%Lf", val);
 
     return str;
+
+    #undef snprintF
 }
 
 /**
@@ -1501,8 +1501,9 @@ string pointer_to_str(void *ptr)
 #define print(...) write(stdout, __VA_ARGS__)
 
 
-/** Utilities **/
-
+// This is utilities section for io
+// Contains utility functions
+// and macros
 
 /**
  * @brief flush the output stream
@@ -1519,7 +1520,7 @@ void flush(FILE* file)
  */
 void ignore(FILE* file)
 {
-    while(fgetc(file) != EOF);
+    for(int c = 0; c != '\n' && c != EOF; c = getc(file));
 }
 
 #endif
