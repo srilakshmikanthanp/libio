@@ -4,15 +4,21 @@
 
 int main()
 {
-    // input test
+    // str test
     char chval = 'A';
     assert(!strcmp(str(chval), "A"));
 
-    signed short ssival = -123;
-    assert(!strcmp(str(chval), "-123"));
+    signed short ssval = -123;
+    assert(!strcmp(str(ssval), "-123"));
 
-    unsigned short ssival = 123;
-    assert(!strcmp(str(chval), "123"));
+    unsigned short usval = 123;
+    assert(!strcmp(str(usval), "123"));
+
+    signed int sival = -123;
+    assert(!strcmp(str(sival), "-123"));
+
+    unsigned int uival = 123;
+    assert(!strcmp(str(uival), "123"));
 
     return 0;
 }

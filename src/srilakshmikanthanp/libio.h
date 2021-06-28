@@ -1160,7 +1160,7 @@ string string_to_str(string str)
  */
 string signed_char_to_str(signed char ch)
 {
-    string str = calloc(1, sizeof(signed char));
+    string str = calloc(2, sizeof(signed char));
 
     if (str == NULL)
     {
@@ -1174,6 +1174,7 @@ string signed_char_to_str(signed char ch)
     }
 
     str[0] = ch;
+    str[1] = '\0';
 
     return str;
 }
@@ -1186,7 +1187,7 @@ string signed_char_to_str(signed char ch)
  */
 string unsigned_char_to_str(unsigned char ch)
 {
-    string str = calloc(1, sizeof(unsigned char));
+    string str = calloc(2, sizeof(unsigned char));
 
     if (str == NULL)
     {
@@ -1200,6 +1201,7 @@ string unsigned_char_to_str(unsigned char ch)
     }
 
     str[0] = ch;
+    str[1] = '\0';
 
     return str;
 }
