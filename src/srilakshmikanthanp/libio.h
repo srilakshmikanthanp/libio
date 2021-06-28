@@ -38,6 +38,14 @@
 #include <inttypes.h>
 
 /**
+ * @brief current version of library
+ */
+#define MAJOR 0
+#define MINOR 0
+#define PATCH 1
+#define VERSION "0.0.1"
+
+/**
  * @mainpage libio
  *
  * @brief This is input/ouput library for c which
