@@ -20,5 +20,11 @@ int main()
     unsigned int uival = 123;
     assert(!strcmp(str(uival), "123"));
 
+    signed long slval = -123;
+    assert(!strcmp(str(slval), "-123"));
+
+    unsigned long ulval = 123;
+    assert(!strcmp(str(ulval), "123"));
+
     return 0;
 }
