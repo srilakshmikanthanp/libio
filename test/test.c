@@ -1,10 +1,18 @@
 #include "../src/srilakshmikanthanp/libio.h"
+#include <string.h>
+#include <assert.h>
 
 int main()
 {
-    int a = input(int , "Enter value : ");
+    // input test
+    char chval = 'A';
+    assert(!strcmp(str(chval), "A"));
 
-    print("val : ", str(a));
+    signed short ssival = -123;
+    assert(!strcmp(str(chval), "-123"));
+
+    unsigned short ssival = 123;
+    assert(!strcmp(str(chval), "123"));
 
     return 0;
 }
