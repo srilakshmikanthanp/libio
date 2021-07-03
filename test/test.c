@@ -4,7 +4,6 @@
 
 int main()
 {
-    // str test
     char chval = 'A';
     assert(!strcmp(str(chval), "A"));
 
@@ -25,6 +24,12 @@ int main()
 
     unsigned long ulval = 123;
     assert(!strcmp(str(ulval), "123"));
+
+    signed long long sllval = -123;
+    assert(!strcmp(str(sllval), "-123"));
+
+    unsigned long long ullval = 123;
+    assert(!strcmp(str(ullval), "123"));
 
     return 0;
 }

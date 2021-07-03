@@ -1174,7 +1174,6 @@ string signed_char_to_str(signed char ch)
     }
 
     str[0] = ch;
-    str[1] = '\0';
 
     return str;
 }
@@ -1201,7 +1200,6 @@ string unsigned_char_to_str(unsigned char ch)
     }
 
     str[0] = ch;
-    str[1] = '\0';
 
     return str;
 }
@@ -1303,7 +1301,7 @@ string unsigned_int_to_str(unsigned int val)
 string signed_long_to_str(signed long val)
 {
     size_t len = snprintf(NULL, 0, "%ld", val);
-    string str = calloc(len + 1, sizeof(char));
+    string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
     {
@@ -1346,7 +1344,7 @@ string unsigned_long_to_str(unsigned long val)
  */
 string signed_long_long_to_str(signed long long val)
 {
-    size_t len = snprintf(NULL, 0, "%"PRId64"" , val);
+    size_t len = snprintf(NULL, 0, "%lld" , val);
     string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
@@ -1355,7 +1353,7 @@ string signed_long_long_to_str(signed long long val)
         return NULL;
     }
 
-    snprintf(str, len, "%"PRId64"", val);
+    snprintf(str, len, "%lld", val);
 
     return str;
 }
@@ -1368,7 +1366,7 @@ string signed_long_long_to_str(signed long long val)
  */
 string unsigned_long_long_to_str(unsigned long long val)
 {
-    size_t len = snprintf(NULL, 0, "%"PRId64"", val);
+    size_t len = snprintf(NULL, 0, "%llu", val);
     string str = calloc(++len, sizeof(char));
 
     if (!lnlistadd(str))
@@ -1377,7 +1375,7 @@ string unsigned_long_long_to_str(unsigned long long val)
         return NULL;
     }
 
-    snprintf(str, len, "%"PRId64"", val);
+    snprintf(str, len, "%llu", val);
 
     return str;
 }
@@ -1503,6 +1501,7 @@ string pointer_to_str(void *ptr)
     float               : signed_float_to_str,           \
     double              : signed_double_to_str,          \
     long double         : signed_long_double_to_str,     \
+    void*               : pointer_to_str,                \
     signed short*       : pointer_to_str,                \
     unsigned short*     : pointer_to_str,                \
     signed int*         : pointer_to_str,                \
