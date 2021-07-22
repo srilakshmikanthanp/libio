@@ -1,7 +1,7 @@
 {
     "C_Cpp.default.cStandard": "c11",
     "files.associations": {
-        "*.html": "django-txt",
         "libio.h": "c"
-    }
+    },
+    "C_Cpp.default.compilerPath": "C:\\TDM-GCC-64\\bin\\gcc.exe"
 }

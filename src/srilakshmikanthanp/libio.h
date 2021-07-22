@@ -57,12 +57,12 @@
 #ifndef MANUAL_CALL_LNLISTDEL
     #if defined(__GNUC__) || defined(__clang__)
         void __attribute__((destructor)) lnlistdel(void);
-    #elif
-        #error "unknown compiler For libio.h library an Issue at"
-               "https://github.com/srilakshmikanthanp/InOut"
-               "or define MANUAL_CALL_LNLISTDEL before include and"
-               "call Manually lnlistdel at end of main or"
-               "register with atexit"
+    #else
+        #error "unknown compiler For libio.h library an Issue at" \
+               "https:\/\/github.com/srilakshmikanthanp/libio" \
+               "or define MANUAL_CALL_LNLISTDEL before include and" \
+               "call Manually lnlistdel at end of main or" \
+               "register with atexit" 
     #endif
 #endif
 
@@ -1501,18 +1501,7 @@ string pointer_to_str(void *ptr)
     float               : signed_float_to_str,           \
     double              : signed_double_to_str,          \
     long double         : signed_long_double_to_str,     \
-    void*               : pointer_to_str,                \
-    signed short*       : pointer_to_str,                \
-    unsigned short*     : pointer_to_str,                \
-    signed int*         : pointer_to_str,                \
-    unsigned int*       : pointer_to_str,                \
-    signed long*        : pointer_to_str,                \
-    unsigned long*      : pointer_to_str,                \
-    signed long long*   : pointer_to_str,                \
-    unsigned long long* : pointer_to_str,                \
-    float*              : pointer_to_str,                \
-    double*             : pointer_to_str,                \
-    long double*        : pointer_to_str                 \
+    void*               : pointer_to_str                 \
 )(val)
 
 /**
@@ -1544,7 +1533,7 @@ void flush(FILE* file)
 }
 
 /**
- * @brief ignore all characters in input stream
+ * @brief ignore until \n or EOF characters in input stream
  * 
  * @param file 
  */
