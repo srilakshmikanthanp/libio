@@ -1519,27 +1519,4 @@ string pointer_to_str(void *ptr)
  */
 #define print(...) write(stdout, __VA_ARGS__)
 
-
-// This is utilities section for io
-// Contains utility functions
-// and macros
-
-/**
- * @brief flush the output stream
- */
-void flush(FILE* file)
-{
-    fflush(file);
-}
-
-/**
- * @brief ignore until \n or EOF characters in input stream
- * 
- * @param file 
- */
-void ignore(FILE* file)
-{
-    for(int c = 0; c != '\n' && c != EOF; c = getc(file));
-}
-
-#endif
+#endif // LIBIO_HEADER
