@@ -25,6 +25,7 @@
 #ifndef LIBIO_HEADER
 #define LIBIO_HEADER
 
+#include <inttypes.h>
 #include <stdio.h>
 #include <math.h>
 #include <stdarg.h>
@@ -35,7 +36,6 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include <inttypes.h>
 
 /**
  * @brief current version of library
@@ -55,15 +55,14 @@
  */
 
 #ifndef MANUAL_CALL_LNLISTDEL
-    #if defined(__GNUC__) || defined(__clang__)
-        void __attribute__((destructor)) lnlistdel(void);
-    #else
-        #error "unknown compiler For libio.h library an Issue at" \
-               "https:\/\/github.com/srilakshmikanthanp/libio" \
-               "or define MANUAL_CALL_LNLISTDEL before include and" \
-               "call Manually lnlistdel at end of main or" \
-               "register with atexit" 
-    #endif
+#if defined(__GNUC__) || defined(__clang__)
+void __attribute__((destructor)) lnlistdel(void);
+#else
+#error "unknown compiler For libio.h library an Issue at \
+https:\\github.com/srilakshmikanthanp/libio \
+or define MANUAL_CALL_LNLISTDEL before include and call \
+Manually lnlistdel at end of main or register with atexit"
+#endif
 #endif
 
 /**
