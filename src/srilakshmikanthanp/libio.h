@@ -58,10 +58,10 @@
 #if defined(__GNUC__) || defined(__clang__)
 void __attribute__((destructor)) lnlistdel(void);
 #else
-#error "unknown compiler For libio.h library an Issue at \
+#error unknown compiler For libio.h library an Issue at \
 https:\\github.com/srilakshmikanthanp/libio \
 or define MANUAL_CALL_LNLISTDEL before include and call \
-Manually lnlistdel at end of main or register with atexit"
+Manually lnlistdel at end of main or register with atexit
 #endif
 #endif
 
